@@ -9,7 +9,8 @@ import java.util.Random;
  * every pixels' RGB values from user's image, the total number of pixels in
  * this image, as well as the integer N, which is input by user. The output will
  * be a 2D integer array, with N rows, 3 columns, each column holds the value of
- * R, G, B. value
+ * R, G, B. 
+ * @yuhong
  */
 
 public class KmeansCalculator {
