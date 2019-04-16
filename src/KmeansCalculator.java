@@ -4,22 +4,22 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * This class is utilizing K-means algorithm to calculate the top N colors for an
- * given image. The input information will be the integer array which stores every
- * pixels' RGB values from user's image, the total number of pixels in this image, 
- * as well as the integer N, which is input by user. The output will be a 2D integer
- * array, with N rows, 3 columns, each column holds the value of R, G, B.
+ * This class is utilizing K-means algorithm to calculate the top N colors for
+ * an given image. The input information will be the integer array which stores
+ * every pixels' RGB values from user's image, the total number of pixels in
+ * this image, as well as the integer N, which is input by user. The output will
+ * be a 2D integer array, with N rows, 3 columns, each column holds the value of
+ * R, G, B.
  */
 
 public class KmeansCalculator {
 	private int totalPixels;
 	private int numOfCenters;
 	private int[][] imageRGBs;
-	
 
 	/**
-	 * This is the constructor for this class, transfer the user input N, * number
-	 * of total pixels into the class, also put every pixel's RGB * * values into a
+	 * This is the constructor for this class, transfer the user input N, number
+	 * of total pixels into the class, also put every pixel's RGB values into a
 	 * SimpleMatrix
 	 */
 	public KmeansCalculator(int totalPixels, int numOfCenters, int[][] inputRGBs) {
@@ -134,8 +134,8 @@ public class KmeansCalculator {
 	}
 
 	/**
-	 * This method is to re-calculate(update) the center of each cluster, after each cluster
-	 * is formed or updated
+	 * This method is to re-calculate(update) the center of each cluster, after each
+	 * cluster is formed or updated
 	 */
 	public int[][] calculateCenter(int[] label) {
 		int[][] newCenter = new int[numOfCenters][3];
@@ -152,8 +152,8 @@ public class KmeansCalculator {
 				}
 			}
 			/**
-			 * divide the sum of coordinates by the number of points, thus the mean value of the
-			 * points is created
+			 * divide the sum of coordinates by the number of points, thus the mean value of
+			 * the points is created
 			 */
 			newCenter[i][0] = (int) (calculate[0] / count);
 			newCenter[i][1] = (int) (calculate[1] / count);
