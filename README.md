@@ -1,3 +1,11 @@
+
+Week 1 First milestone - not allow user input - one test image; 
+
+Make all the classes - class names and files existing;
+Write as many method signatures as possible (name, return type, argument) and leave those method empty - have the structure;
+Can start with a couple method; 
+
+-------------
 Final Project Proposal
 
 Team Member: Yuhong Du(yuhongdu@seas.upenn.edu), Yue Jian(yuejian@seas.upenn.edu), Zikai Xu(zikai@seas.upenn.edu) (ordered by last name)
@@ -26,20 +34,6 @@ YD K-Mean Calculation: find the average color range of each Hue group;
 YJ ColorPictureLibrary: the “Color_Picture” class contains a map of pictures and “HSB_Values”. Each picture should have instance variables for the “HSB Values” and “FileName”; 
 YJ ColorNameLibrary: a class holds of “HSB_Values” and “Color Names”;
 YJ ColorInt: given color is primitive, we add a calss for colorInt to hold the RGB value;
-
-
-Week 1 First milestone - not allow user input - one test image; 
-
-Make all the classes - class names and files existing;
-Write as many method signatures as possible (name, return type, argument) and leave those method empty - have the structure;
-Can start with a couple method; 
-JUnit test - # of elements (center of all colors, within range); no need to have JUnit for every function;
-Set up GitHub, remember to add Anvi;
-Communication - email Anvi anytime; 
-
-
-
-
 
 Procedures: 
 
