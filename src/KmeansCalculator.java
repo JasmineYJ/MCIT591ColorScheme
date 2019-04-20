@@ -9,8 +9,7 @@ import java.util.Random;
  * every pixels' RGB values from user's image, the total number of pixels in
  * this image, as well as the integer N, which is input by user. The output will
  * be a 2D integer array, with N rows, 3 columns, each column holds the value of
- * R, G, B. 
- * @yuhong
+ * R, G, B.
  */
 
 public class KmeansCalculator {
@@ -19,8 +18,8 @@ public class KmeansCalculator {
 	private int[][] imageRGBs;
 
 	/**
-	 * This is the constructor for this class, transfer the user input N, number
-	 * of total pixels into the class, also put every pixel's RGB values into a
+	 * This is the constructor for this class, transfer the user input N, number of
+	 * total pixels into the class, also put every pixel's RGB values into a
 	 * SimpleMatrix
 	 */
 	public KmeansCalculator(int totalPixels, int numOfCenters, int[][] inputRGBs) {
@@ -39,9 +38,7 @@ public class KmeansCalculator {
 	public int[][] firstPathCenter() {
 		int[] firstCenter = new int[numOfCenters];
 		int random;
-		/**
-		 * check to see if it's beneficial to change to another random generator
-		 */
+
 		Random r = new Random();
 		for (int ii = 0; ii < numOfCenters; ii++) {
 			random = r.nextInt(totalPixels);
@@ -96,8 +93,9 @@ public class KmeansCalculator {
 	}
 
 	/**
-	 * Label each pixel based on their "color Euclidean distance" from the cluster
-	 * centers, so each pixel will be associated with a color it's closest to
+	 * This Method label each pixel based on their "color Euclidean distance" from
+	 * the cluster centers, so each pixel will be associated with a color it's
+	 * closest to
 	 */
 	public int[] lablePixels(int[][] centers) {
 		int[] label = new int[totalPixels];
@@ -105,25 +103,27 @@ public class KmeansCalculator {
 		for (int i = 0; i < totalPixels; i++) {
 			int labelInt = 0;
 			minDistance = 100.00 * (256.0 * 256.0);
+			int[] target = new int[3];
+			target[0] = imageRGBs[i][0];
+			target[1] = imageRGBs[i][1];
+			target[2] = imageRGBs[i][2];
 			for (int j = 0; j < numOfCenters; j++) {
-				int[] target = new int[3];
-				target[0] = imageRGBs[i][0];
-				target[1] = imageRGBs[i][1];
-				target[2] = imageRGBs[i][2];
 				int[] centerColor = new int[3];
 				centerColor[0] = centers[j][0];
 				centerColor[1] = centers[j][1];
 				centerColor[2] = centers[j][2];
 				/**
-				 * get the distance between this two points, matrix multiplication
+				 * get the distance between this two points
 				 */
 				int temp = 0;
 				int distance = 0;
 				for (int x = 0; x < 3; x++) {
-					temp = (int) Math.pow((target[0] - centerColor[0]), 2);
+					temp = (int) Math.pow((target[x] - centerColor[x]), 2);
 					distance = distance + temp;
 				}
-
+				/**
+				 * find the nearest center point
+				 */
 				if (distance < minDistance) {
 					minDistance = distance;
 					labelInt = j;
@@ -144,11 +144,14 @@ public class KmeansCalculator {
 			int count = 0;
 			double[] calculate = new double[3];
 			calculate[0] = calculate[1] = calculate[2] = 0.00;
+			/**
+			 * loop through all the pixels
+			 */
 			for (int j = 0; j < totalPixels; j++) {
 				if (label[j] == i) {
 					calculate[0] = calculate[0] + imageRGBs[j][0];
 					calculate[1] = calculate[1] + imageRGBs[j][1];
-					calculate[2] = calculate[1] + imageRGBs[j][2];
+					calculate[2] = calculate[2] + imageRGBs[j][2];
 					count = count + 1;
 				}
 			}
@@ -162,5 +165,46 @@ public class KmeansCalculator {
 		}
 		return newCenter;
 	}
-	
+
+	public static void main(String[] args) {
+		/**
+		 * int color is the int N (top N color)
+		 */
+		int color = 5;
+		/**
+		 * construct a new ImageReading instance to read image
+		 */
+		ImageReading i = new ImageReading("test_image.jpg");
+		int[][] testI = i.getImageRGB();
+		int pixelNum = i.getPixelNum();
+
+		KmeansCalculator k = new KmeansCalculator(pixelNum, color, testI);
+
+		int[][] firstCenter = k.firstPathCenter();
+		int[] label = k.lablePixels(firstCenter);
+		/**
+		 * int[][] is the result containing the top N colors. Each row stores a color
+		 */
+		int[][] result = new int[color][3];
+
+		/**
+		 * int num is the round of iteration. The bigger this number is, the more
+		 * accurate the result would be, but at the same time, the longer the run time
+		 * would be.
+		 */
+		int num = 0;
+		while (num < 50) {
+			result = k.calculateCenter(label);
+			label = k.lablePixels(result);
+			num++;
+		}
+
+		// here is to print the result color
+//		for(int i1 = 0; i1 < color; i1++) {
+//			System.out.print(result[i1][0] + ",");
+//			System.out.print(result[i1][1] + ",");
+//			System.out.print(result[i1][2]);
+//			System.out.println();
+//		}
+	}
 }
