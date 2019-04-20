@@ -200,11 +200,11 @@ public class KmeansCalculator {
 		}
 
 		// here is to print the result color
-		for (int i1 = 0; i1 < color; i1++) {
-			System.out.print(result[i1][0] + ",");
-			System.out.print(result[i1][1] + ",");
-			System.out.print(result[i1][2]);
-			System.out.println();
-		}
+//		for (int i1 = 0; i1 < color; i1++) {
+//			System.out.print(result[i1][0] + ",");
+//			System.out.print(result[i1][1] + ",");
+//			System.out.print(result[i1][2]);
+//			System.out.println();
+//		}
 	}
 }
