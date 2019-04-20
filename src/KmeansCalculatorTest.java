@@ -38,8 +38,8 @@ class KmeansCalculatorTest {
 		int[] label = k.lablePixels(firstCenter);
 		for (int x = 0; x < pixelNum; x++) {
 			int value = label[x];
-			assertTrue("Wrong labels", 5 >= value);
-			assertTrue("Wrong labels", 0 <= value);
+			assertTrue("Wrong label", 5 >= value);
+			assertTrue("Wrong label", 0 <= value);
 		}
 	}
 
