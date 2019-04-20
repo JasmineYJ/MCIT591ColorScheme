@@ -8,9 +8,10 @@ class KmeansCalculatorTest {
 	@Test
 	void testFirstPathCenter() {
 		/**
-		 * "test_image.jpg" is the name of the image used for testing
+		 * "test.jpg" is the name of the image used for testing
+		 * the test image is 453 x 777 pixels
 		 */
-		ImageReading i = new ImageReading("test_image.jpg");
+		ImageReading i = new ImageReading("test.jpg");
 		int[][] testI = i.getImageRGB();
 		int pixelNum = i.getPixelNum();
 		KmeansCalculator k = new KmeansCalculator(pixelNum, 5, testI);
@@ -29,7 +30,7 @@ class KmeansCalculatorTest {
 		/**
 		 * "test_image.jpg" is the name of the image used for testing
 		 */
-		ImageReading i = new ImageReading("test_image.jpg");
+		ImageReading i = new ImageReading("test.jpg");
 		int[][] testI = i.getImageRGB();
 		int pixelNum = i.getPixelNum();
 		KmeansCalculator k = new KmeansCalculator(pixelNum, 5, testI);
@@ -47,7 +48,7 @@ class KmeansCalculatorTest {
 		/**
 		 * "test_image.jpg" is the name of the image used for testing
 		 */
-		ImageReading i = new ImageReading("test_image.jpg");
+		ImageReading i = new ImageReading("test.jpg");
 		int[][] testI = i.getImageRGB();
 		int pixelNum = i.getPixelNum();
 		KmeansCalculator k = new KmeansCalculator(pixelNum, 5, testI);

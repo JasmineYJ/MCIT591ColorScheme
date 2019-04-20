@@ -172,9 +172,10 @@ public class KmeansCalculator {
 		 */
 		int color = 5;
 		/**
-		 * construct a new ImageReading instance to read image
+		 * construct a new ImageReading instance to read image; the test image is 
+		 * 453 x 777 pixels
 		 */
-		ImageReading i = new ImageReading("test_image.jpg");
+		ImageReading i = new ImageReading("test.jpg");
 		int[][] testI = i.getImageRGB();
 		int pixelNum = i.getPixelNum();
 
