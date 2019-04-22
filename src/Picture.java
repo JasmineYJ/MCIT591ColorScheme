@@ -28,6 +28,13 @@ public class Picture {
 	// int[][] is the result containing the top N colors. Each row stores a color
 	int[][] result = new int[numOfColor][3];
 
+	int num = 0;
+	while (num < roundOfIteration) {
+		result = kC.calculateCenter(label);
+		label = kC.lablePixels(result);
+		num++;
+	}
+	
 	for (int i1 = 0; i1 < numOfColor; i1++) {
 	    int rValue = result[i1][0];
 	    int gValue = result[i1][1];
@@ -41,4 +48,29 @@ public class Picture {
 	}
     }
 
+    public String getC1() {
+        return c1;
+    }
+
+    public String getC2() {
+        return c2;
+    }
+
+    public String getC3() {
+        return c3;
+    }
+
+    public String getC4() {
+        return c4;
+    }
+
+    public String getC5() {
+        return c5;
+    }
+
+    public String getPictureFileName() {
+        return pictureFileName;
+    }
+
+    
 }
