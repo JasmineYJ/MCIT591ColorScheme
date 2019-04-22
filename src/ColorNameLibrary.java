@@ -13,7 +13,7 @@ import java.awt.Color;
  * we can't find a name for this given color within the threshold, we increment
  * the threshold until we find one; this method will be called by the picture
  * library class also, so that we can get the top five color name from the the
- * repository (TODO the repository need to be ranked by yuhong's method).
+ * repository.
  * 
  * @author jasminejian
  *
@@ -22,7 +22,7 @@ import java.awt.Color;
 public class ColorNameLibrary {
     public HashMap<String, ColorInt> colorName;
     private final String colorNamefile = "ColorNames.csv";
-    private final double thresholdOne = 30.0;
+    private final double thresholdOne = 0.0;
 
     public String getColorName(int rValue, int gValue, int bValue) {
 	String thisName = "";
@@ -85,5 +85,11 @@ public class ColorNameLibrary {
 	}
 
     }
+
+    public HashMap<String, ColorInt> getColorName() {
+        return colorName;
+    }
+    
+    
 
 }
