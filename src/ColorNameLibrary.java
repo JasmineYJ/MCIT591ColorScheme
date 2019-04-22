@@ -42,7 +42,7 @@ public class ColorNameLibrary {
 		}
 	    }
 
-	    thisThreshold += 30; // we increase the threshold until we find a proper name for this color;
+	    thisThreshold += 10; // we increase the threshold until we find a proper name for this color;
 	}
 
 	return thisName;
