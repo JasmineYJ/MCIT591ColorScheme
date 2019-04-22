@@ -1,5 +1,6 @@
 /**
- * I'm not exactly sure if i want to keep this. 
+ * I'm not exactly sure if i want to keep this.
+ * 
  * @author jasminejian
  *
  */
@@ -11,14 +12,35 @@ public class Picture {
     private String c4;
     private String c5;
     private String pictureFileName;
-    
-    
-    
-    public Picture(int picRef) {
-	pictureFileName = "p"+picRef+".jpg";
-	//TODO: call the file reader from Zeke1830; 
-	//TODO: call the TopN color analzer from yuhong then assign the returned value to c1 to c5;
+    private ColorNameLibrary CML;
+    private int numOfColor = 5; // TODO: remember to update this based on UI read;
+    private int roundOfIteration = 30; // TODO: change this number based on runtime and accuracy;
+
+    public Picture(int picRef, ColorNameLibrary CML) {
+	pictureFileName = "p" + picRef + ".jpg";
+
+	ImageReading reader = new ImageReading(pictureFileName);
+	int[][] colorResult = reader.getImageRGB();
+	int pixelNum = reader.getPixelNum();
+	KmeansCalculator kC = new KmeansCalculator(pixelNum, numOfColor, colorResult);
+
+	int[][] firstCenter = kC.firstPathCenter();
+	int[] label = kC.lablePixels(firstCenter);
+
+	// int[][] is the result containing the top N colors. Each row stores a color
+	int[][] result = new int[numOfColor][3];
+
+	for (int i1 = 0; i1 < numOfColor; i1++) {
+	    int rValue = result[i1][0];
+	    int gValue = result[i1][1];
+	    int bValue = result[i1][2];
+	    String colorName = CML.getColorName(rValue, gValue, bValue);
+	    if (i1==1) {c1=colorName;}
+	    if (i1==2) {c2=colorName;}
+	    if (i1==3) {c3=colorName;}
+	    if (i1==4) {c4=colorName;}
+	    else {c5=colorName;}
+	}
     }
-    
-    
+
 }
