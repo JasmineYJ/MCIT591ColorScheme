@@ -1,7 +1,4 @@
 import java.util.*;
-
-import sun.security.x509.IssuingDistributionPointExtension;
-
 import java.io.*;
 
 public class ColorPictureLibrary {
