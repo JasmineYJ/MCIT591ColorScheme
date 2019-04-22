@@ -1,8 +1,6 @@
 /**
- * I'm not exactly sure if i want to keep this.
- * 
+ * Each picuture has 5 color names attach to it.
  * @author jasminejian
- *
  */
 
 public class Picture {
