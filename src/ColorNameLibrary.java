@@ -20,7 +20,7 @@ import java.awt.Color;
  */
 
 public class ColorNameLibrary {
-    public HashMap<String, ColorInt> colorName;
+    public HashMap<String, ColorInt> colorNames;
     private final String colorNamefile = "ColorNames.csv";
     private final double thresholdOne = 0.0;
 
@@ -32,9 +32,9 @@ public class ColorNameLibrary {
 	while (nameFound == false) {
 	    double thisThreshold = thresholdOne;
 
-	    for (String c : colorName.keySet()) {
+	    for (String c : colorNames.keySet()) {
 
-		double thisVariance = sumOfVariance(colorName.get(c), rValue, gValue, bValue);
+		double thisVariance = sumOfVariance(colorNames.get(c), rValue, gValue, bValue);
 		if (thisVariance <= thresholdOne && thisVariance < variance) {
 		    thisName = c;
 		    variance = thisVariance;
@@ -63,7 +63,7 @@ public class ColorNameLibrary {
 
     public ColorNameLibrary() {
 	File file = new File(colorNamefile);
-	colorName = new HashMap<String, ColorInt>();
+	colorNames = new HashMap<String, ColorInt>();
 
 	try {
 	    Scanner scanner = new Scanner(file);
@@ -77,7 +77,7 @@ public class ColorNameLibrary {
 		int tempG = Integer.valueOf(columnData[2]);
 		int tempB = Integer.valueOf(columnData[3]);
 		ColorInt newColor = new ColorInt(tempName, tempR, tempG, tempB);
-		colorName.put(tempName, newColor);
+		colorNames.put(tempName, newColor);
 	    }
 	} catch (Exception e) {
 	    // TODO: handle exception
@@ -86,8 +86,8 @@ public class ColorNameLibrary {
 
     }
 
-    public HashMap<String, ColorInt> getColorName() {
-        return colorName;
+    public HashMap<String, ColorInt> getColorNames() {
+        return colorNames;
     }
     
     
