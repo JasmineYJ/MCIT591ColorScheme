@@ -47,7 +47,24 @@ public class Picture {
 	    else {c5=colorName;}
 	}
     }
-
+    
+    // a different constructor which takes the result from Main result of the user input
+    public Picture(int[][] userR) {
+	int num = 0;
+	 
+	for (int i1 = 0; i1 < numOfColor; i1++) {
+	    int rValue = userR[i1][0];
+	    int gValue = userR[i1][1];
+	    int bValue = userR[i1][2];
+	    String colorName = CML.getColorName(rValue, gValue, bValue);
+	    if (i1==1) {c1=colorName;}
+	    if (i1==2) {c2=colorName;}
+	    if (i1==3) {c3=colorName;}
+	    if (i1==4) {c4=colorName;}
+	    else {c5=colorName;}
+	}
+    }
+    
     public String getC1() {
         return c1;
     }
