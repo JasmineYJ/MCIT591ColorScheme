@@ -50,7 +50,7 @@ public class ColorPictureLibrary {
 	    if (thisP.getC5() == userP.getC5()) {
 		count++;
 	    }
-
+  
 	    if (count > benchmark) {
 		ref = i;
 		benchmark = count;
