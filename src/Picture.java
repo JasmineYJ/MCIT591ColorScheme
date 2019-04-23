@@ -1,5 +1,8 @@
 /**
- * Each picuture has 5 color names attach to it.
+ * Each picture has 5 color names attach to it. Subject to change. But i think
+ * even single color should have 5 colors? Black, white, light grey, dark grey
+ * etc. TODO: should test out with single color pic && consider add more colors;
+ * 
  * @author jasminejian
  */
 
@@ -30,64 +33,82 @@ public class Picture {
 
 	int num = 0;
 	while (num < roundOfIteration) {
-		result = kC.calculateCenter(label);
-		label = kC.lablePixels(result);
-		num++;
+	    result = kC.calculateCenter(label);
+	    label = kC.lablePixels(result);
+	    num++;
 	}
-	
+
 	for (int i1 = 0; i1 < numOfColor; i1++) {
 	    int rValue = result[i1][0];
 	    int gValue = result[i1][1];
 	    int bValue = result[i1][2];
 	    String colorName = CML.getColorName(rValue, gValue, bValue);
-	    if (i1==1) {c1=colorName;}
-	    if (i1==2) {c2=colorName;}
-	    if (i1==3) {c3=colorName;}
-	    if (i1==4) {c4=colorName;}
-	    else {c5=colorName;}
+	    if (i1 == 1) {
+		c1 = colorName;
+	    }
+	    if (i1 == 2) {
+		c2 = colorName;
+	    }
+	    if (i1 == 3) {
+		c3 = colorName;
+	    }
+	    if (i1 == 4) {
+		c4 = colorName;
+	    } else {
+		c5 = colorName;
+	    }
 	}
     }
-    
-    // a different constructor which takes the result from Main result of the user input
+
+    // a different constructor which takes the result from Main result of the user
+    // input
     public Picture(int[][] userR) {
 	int num = 0;
-	 
+
 	for (int i1 = 0; i1 < numOfColor; i1++) {
 	    int rValue = userR[i1][0];
 	    int gValue = userR[i1][1];
 	    int bValue = userR[i1][2];
 	    String colorName = CML.getColorName(rValue, gValue, bValue);
-	    if (i1==1) {c1=colorName;}
-	    if (i1==2) {c2=colorName;}
-	    if (i1==3) {c3=colorName;}
-	    if (i1==4) {c4=colorName;}
-	    else {c5=colorName;}
+	    if (i1 == 1) {
+		c1 = colorName;
+	    }
+	    if (i1 == 2) {
+		c2 = colorName;
+	    }
+	    if (i1 == 3) {
+		c3 = colorName;
+	    }
+	    if (i1 == 4) {
+		c4 = colorName;
+	    } else {
+		c5 = colorName;
+	    }
 	}
     }
-    
+
     public String getC1() {
-        return c1;
+	return c1;
     }
 
     public String getC2() {
-        return c2;
+	return c2;
     }
 
     public String getC3() {
-        return c3;
+	return c3;
     }
 
     public String getC4() {
-        return c4;
+	return c4;
     }
 
     public String getC5() {
-        return c5;
+	return c5;
     }
 
     public String getPictureFileName() {
-        return pictureFileName;
+	return pictureFileName;
     }
 
-    
 }
