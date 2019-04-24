@@ -2,6 +2,12 @@
 import java.util.*;
 import java.io.*;
 
+/**
+ * Recommend similar picture by comparing the color names
+ * @author jasminejian
+ *
+ */
+
 public class ColorPictureLibrary {
     public HashMap<Integer, Picture> colorToPicture;
     public String libraryColorResult = "pictureLibraryResult.csv";

@@ -1,4 +1,8 @@
-// color itself is a primitive type. In order to use a hashmap, need to have a separate class 
+/**
+ * Color itself is a primitive type. In order to use a hashmap, need to have a separate class 
+ * @author jasminejian
+ *
+ */
 
 public class ColorInt {
     private String colorName;
