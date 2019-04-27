@@ -4,6 +4,7 @@ import java.io.*;
 
 /**
  * Recommend similar picture by comparing the color names
+ * 
  * @author jasminejian
  *
  */
@@ -16,7 +17,8 @@ public class ColorPictureLibrary {
     // TODO: assign a threshold that we can adjust as long as the variances is less
     // than that, we can assign the color name, see if any exception;
 
-    // Constructor which loop through all pictures and write to CSV. This line will retire once we have everything running.
+    // Constructor which loop through all pictures and write to CSV. This line will
+    // retire once we have everything running.
     public ColorPictureLibrary() {
 	ColorNameLibrary cNames = new ColorNameLibrary();
 	colorToPicture = new HashMap<Integer, Picture>();
@@ -29,37 +31,40 @@ public class ColorPictureLibrary {
 	writeColorToCSV(colorToPicture);
     }
 
-    // Method that returns a similar picture as user input. Should be called by system output. 
-    public String similarPic(int[][] userPicture) {
+    // Method that returns a similar picture as user input. Should be called by
+    // system output.
+    public String similarPic(String[] userPicture) {
 	Integer ref = 0;
 	int benchmark = 0;
-	Picture userP = new Picture(userPicture);
+	int len = userPicture.length;
 
 	for (Integer i : colorToPicture.keySet()) {
 	    Integer count = 0;
 	    Picture thisP = colorToPicture.get(i);
 
-	    if (thisP.getC1() == userP.getC1() | thisP.getC1() == userP.getC2() ) {
-		count+=100;
+	    for (int j = 0; j < len; j++) {
+		if (thisP.getC1().equals(userPicture[0])) {
+		    count ++;
+		}
+		if (thisP.getC2().equals(userPicture[0])) {
+		    count ++;
+		}
+		if (thisP.getC3().equals(userPicture[0])) {
+		    count ++;
+		}
+		if (thisP.getC4().equals(userPicture[0])) {
+		    count ++;
+		}
+		if (thisP.getC5().equals(userPicture[0])) {
+		    count ++;
+		}
 	    }
-	    
-	    if (thisP.getC2() == userP.getC2() | thisP.getC2() == userP.getC3()) {
-		count+=80;
-	    }
-	    if (thisP.getC3() == userP.getC3() | thisP.getC3() == userP.getC4()) { //TODO: Add try-catch block for single color;
-		count+=60;
-	    }
-	    if (thisP.getC4() == userP.getC4() | thisP.getC4() == userP.getC5()) { //TODO: Add try-catch block for single color;
-		count+=40;
-	    }
-	    if (thisP.getC5() == userP.getC5()) { //TODO: Add try-catch block for single color;
-		count+=20;
-	    }
-  
+
 	    if (count > benchmark) {
 		ref = i;
 		benchmark = count;
 	    }
+
 	}
 
 	Picture similarPic = colorToPicture.get(ref);
