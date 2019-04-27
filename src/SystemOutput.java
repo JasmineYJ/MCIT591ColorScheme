@@ -35,12 +35,13 @@ public class SystemOutput {
 		String[] colorNames = new String[topN];
 		String tempName;
 		ColorNameLibrary cN = new ColorNameLibrary();
-		// the following few lines are for test only
-//		for (int i = 0; i < topN; i ++) {
-//			tempName = cN.getColorName(result[i][0], result[i][0], result[i][0]);
-//			colorNames[i] = tempName;
-//			System.out.println(tempName);
-//		}
+
+		for (int i = 0; i < topN; i++) {
+			tempName = cN.getColorName(result[i][0], result[i][0], result[i][0]);
+			colorNames[i] = tempName;
+			// this line is for test only
+			System.out.println(tempName);
+		}
 
 	}
 
