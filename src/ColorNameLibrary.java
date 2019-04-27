@@ -38,8 +38,8 @@ public class ColorNameLibrary {
 		return thisName;
 	}
 
-	public double distance(ColorInt colorInt, int rValue, int gValue, int bValue) {
-		double dist = 0;
+	public int distance(ColorInt colorInt, int rValue, int gValue, int bValue) {
+		int dist = 0;
 		dist += (int) Math.pow(rValue - colorInt.getrValue(), 2);
 		dist += (int) Math.pow(gValue - colorInt.getgValue(), 2);
 		dist += (int) Math.pow(bValue - colorInt.getbValue(), 2);

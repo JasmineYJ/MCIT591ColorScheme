@@ -41,9 +41,7 @@ public class SystemOutput {
 			tempName = cN.getColorName(result[i][0], result[i][0], result[i][0]);
 			colorNames[i] = tempName;
 		}
-		
-		Arrays.sort(colorNames);
-		
+		// the following few lines are for test only
 		for(String s: colorNames) {
 			System.out.println(s);
 		}
