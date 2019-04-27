@@ -1,5 +1,8 @@
 
 import java.util.*;
+
+import jdk.internal.org.objectweb.asm.tree.TryCatchBlockNode;
+
 import java.io.*;
 
 /**
@@ -19,8 +22,7 @@ public class ColorPictureLibrary {
 
     // Constructor which loop through all pictures and write to CSV. This line will
     // retire once we have everything running.
-    public ColorPictureLibrary() {
-	ColorNameLibrary cNames = new ColorNameLibrary();
+    public ColorPictureLibrary(ColorNameLibrary cNames) {
 	colorToPicture = new HashMap<Integer, Picture>();
 
 	// read through the picture library and store the result to the CSV file.
@@ -28,7 +30,8 @@ public class ColorPictureLibrary {
 	    Picture pi = new Picture(i, cNames);
 	    colorToPicture.put(i, pi);
 	}
-	writeColorToCSV(colorToPicture);
+	printOutColors(colorToPicture);
+//	writeColorToCSV(colorToPicture); TODO: Add this back
     }
 
     // Method that returns a similar picture as user input. Should be called by
@@ -71,27 +74,41 @@ public class ColorPictureLibrary {
 	return similarPic.getPictureFileName();
     }
 
-    // Method that write the resulted hash map to the CSV file.
-    public void writeColorToCSV(HashMap<Integer, Picture> pictureLib) {
-	File out = new File(libraryColorResult);
-
-	try (PrintWriter pw = new PrintWriter(out)) {
-
-	    // Prints each line in answers
-	    for (Integer i : pictureLib.keySet()) {
-		pw.print(i + ",");
-		Picture thisP = pictureLib.get(i);
-		pw.print(thisP.getC1() + ",");
-		pw.print(thisP.getC2() + ",");
-		pw.print(thisP.getC3() + ",");
-		pw.print(thisP.getC4() + ",");
-		pw.print(thisP.getC5() + ",");
-	    }
-
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    System.out.println("Could not write the File out.  Check permissions, or contact course staff for help");
-	}
+    //TODO: replace this section with the section below. Now for test purpose, print out the colors read;
+    public void printOutColors(HashMap<Integer, Picture> pictureLib) {
+		    for (Integer i : pictureLib.keySet()) {
+			System.out.print(i + ",");
+			Picture thisP = pictureLib.get(i);
+			System.out.print(thisP.getC1() + ",");
+			System.out.print(thisP.getC2() + ",");
+			System.out.print(thisP.getC3() + ",");
+			System.out.print(thisP.getC4() + ",");
+			System.out.print(thisP.getC5() + ",");
+		    }
     }
+    
+    
+//    // Method that write the resulted hash map to the CSV file.
+//    public void writeColorToCSV(HashMap<Integer, Picture> pictureLib) {
+//	File out = new File(libraryColorResult);
+//
+//	try (PrintWriter pw = new PrintWriter(out)) {
+//
+//	    // Prints each line in answers
+//	    for (Integer i : pictureLib.keySet()) {
+//		pw.print(i + ",");
+//		Picture thisP = pictureLib.get(i);
+//		pw.print(thisP.getC1() + ",");
+//		pw.print(thisP.getC2() + ",");
+//		pw.print(thisP.getC3() + ",");
+//		pw.print(thisP.getC4() + ",");
+//		pw.print(thisP.getC5() + ",");
+//	    }
+//
+//	} catch (IOException e) {
+//	    e.printStackTrace();
+//	    System.out.println("Could not write the File out.  Check permissions, or contact course staff for help");
+//	}
+//  }
 
 }

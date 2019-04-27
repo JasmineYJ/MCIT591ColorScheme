@@ -36,6 +36,7 @@ public class SystemOutput {
 		String[] colorNames = new String[topN];
 		String tempName;
 		ColorNameLibrary cN = new ColorNameLibrary();
+		ColorPictureLibrary cP = new ColorPictureLibrary(cN);
 
 		for (int i = 0; i < topN; i++) {
 			tempName = cN.getColorName(result[i][0], result[i][0], result[i][0]);
@@ -45,6 +46,9 @@ public class SystemOutput {
 		for(String s: colorNames) {
 			System.out.println(s);
 		}
+		
+		// the following lines are used for test the return of similar pic;
+		System.out.println(cP.similarPic(colorNames));
 
 	}
 

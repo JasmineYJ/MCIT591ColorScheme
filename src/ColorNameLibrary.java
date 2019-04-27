@@ -21,7 +21,8 @@ public class ColorNameLibrary {
 	private final String colorNamefile = "ColorNames.csv";
 
 	public String getColorName(int rValue, int gValue, int bValue) {
-		String thisName = "";
+	    System.out.println(rValue+","+gValue+","+bValue);//TODO: to be deleted
+	    String thisName = "";
 		double minDist = 100.00 * (256.0 * 256.0);
 
 		/**
@@ -34,8 +35,9 @@ public class ColorNameLibrary {
 				thisName = c;
 			}
 		}
-
+		System.out.println(thisName);//TODO: to be deleted
 		return thisName;
+		
 	}
 
 	public int distance(ColorInt colorInt, int rValue, int gValue, int bValue) {

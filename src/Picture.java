@@ -17,9 +17,13 @@ public class Picture {
     private int numOfColor = 5; // TODO: remember to update this based on UI read;
     private int roundOfIteration = 30; // TODO: change this number based on runtime and accuracy;
 
-    public Picture(int picRef, ColorNameLibrary CML) {
-	pictureFileName = "p" + picRef + ".jpg";
-
+    public Picture(int picRef, ColorNameLibrary CNL) {
+	
+	///Users/jasminejian/git/MCIT591ColorScheme/Pinterest
+	
+	pictureFileName = "Pinterest/p" + picRef + ".jpg";
+	System.out.println(pictureFileName); //TODO: to be deleted
+	
 	ImageReading reader = new ImageReading(pictureFileName);
 	int[][] colorResult = reader.getImageRGB();
 	int pixelNum = reader.getPixelNum();
@@ -42,7 +46,7 @@ public class Picture {
 	    int rValue = result[i1][0];
 	    int gValue = result[i1][1];
 	    int bValue = result[i1][2];
-	    String colorName = CML.getColorName(rValue, gValue, bValue);
+	    String colorName = CNL.getColorName(rValue, gValue, bValue);
 	    if (i1 == 1) {
 		c1 = colorName;
 	    }
