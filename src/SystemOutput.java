@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class SystemOutput {
 
@@ -39,8 +40,12 @@ public class SystemOutput {
 		for (int i = 0; i < topN; i++) {
 			tempName = cN.getColorName(result[i][0], result[i][0], result[i][0]);
 			colorNames[i] = tempName;
-			// this line is for test only
-			System.out.println(tempName);
+		}
+		
+		Arrays.sort(colorNames);
+		
+		for(String s: colorNames) {
+			System.out.println(s);
 		}
 
 	}
