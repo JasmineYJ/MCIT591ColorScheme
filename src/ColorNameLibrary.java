@@ -90,6 +90,13 @@ public class ColorNameLibrary {
         return colorNames;
     }
     
+    public static void main(String[] args) {
+    	String[] colorNames = new String[5];
+		String tempName;
+		ColorNameLibrary cN = new ColorNameLibrary();
+		tempName = cN.getColorName(219, 170, 57);
+	}
+    
     
 
 }
