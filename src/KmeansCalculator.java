@@ -165,45 +165,62 @@ public class KmeansCalculator {
 		}
 		return newCenter;
 	}
+	
+	
+	/**
+	 * This method put every method needed for calculation together; 
+	 */
+	public int[][] calculateColor(){
+		int[][] firstCenter = firstPathCenter();
+		int[] label = lablePixels(firstCenter);
+		int i = 0;
+		int[][] result = new int[numOfCenters][3];
+		
+		/**
+		 * int iterationRounds controls how many rounds of iteration in the calculation process;
+		 * The bigger int iterationRounds is, the more accurate the result would be, but at the same time,
+		 * the longer the run time would be. The int iteratoinRounds here is dependent on the size of the
+		 * image which is to be calculated;
+		 */
+		int iterationRounds = 0;
+		if (totalPixels < 1000 * 1000) {
+			iterationRounds = 25;
+		}else if (totalPixels >= 1000 * 1000 && totalPixels <= 3000 * 3000){
+			iterationRounds = 15;
+		}else {
+			iterationRounds = 5;
+		}
+		while (i < iterationRounds) {
+			result = calculateCenter(label);
+			label = lablePixels(result);
+			i++;
+		}
+		
+		return result;
+	}
 
+	
 	public static void main(String[] args) {
 		/**
 		 * int color is the int N (top N color)
 		 */
-		int color = 5;
+		int topN = 5;
 		/**
 		 * construct a new ImageReading instance to read image
 		 */
-		ImageReading i = new ImageReading("test_image.jpg");
-		int[][] testI = i.getImageRGB();
-		int pixelNum = i.getPixelNum();
+		ImageReading image = new ImageReading("test_image.jpg");
+		int[][] testI = image.getImageRGB();
+		int pixelNum = image.getPixelNum();
 
-		KmeansCalculator k = new KmeansCalculator(pixelNum, color, testI);
-
-		int[][] firstCenter = k.firstPathCenter();
-		int[] label = k.lablePixels(firstCenter);
-		/**
-		 * int[][] is the result containing the top N colors. Each row stores a color
-		 */
-		int[][] result = new int[color][3];
-
-		/**
-		 * int num is the round of iteration. The bigger this number is, the more
-		 * accurate the result would be, but at the same time, the longer the run time
-		 * would be.
-		 */
-		int num = 0;
-		while (num < 30) {
-			result = k.calculateCenter(label);
-			label = k.lablePixels(result);
-			num++;
-		}
+		KmeansCalculator k = new KmeansCalculator(pixelNum, topN, testI);
+		
+		int[][] result = k.calculateColor();
 
 		// here is to print the result color
-//		for (int i1 = 0; i1 < color; i1++) {
-//			System.out.print(result[i1][0] + ",");
-//			System.out.print(result[i1][1] + ",");
-//			System.out.print(result[i1][2]);
+//		for (int i = 0; i < topN; i++) {
+//			System.out.print(result[i][0] + ",");
+//			System.out.print(result[i][1] + ",");
+//			System.out.print(result[i][2]);
 //			System.out.println();
 //		}
 	}
