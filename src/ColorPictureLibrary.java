@@ -15,7 +15,7 @@ import java.io.*;
 public class ColorPictureLibrary {
     public HashMap<Integer, Picture> colorToPicture;
     public String libraryColorResult = "pictureLibraryResult.csv";
-    private int numPictures = 100; // TODO: remember to update this number when we expand the library;
+    private int numPictures = 203; // TODO: remember to update this number when we expand the library;
 
     // TODO: assign a threshold that we can adjust as long as the variances is less
     // than that, we can assign the color name, see if any exception;
@@ -37,8 +37,12 @@ public class ColorPictureLibrary {
     // Method that returns a similar picture as user input. Should be called by
     // system output.
     public String similarPic(String[] userPicture) {
-	Integer ref = 0;
-	int benchmark = 0;
+	Integer ref1 = 0;
+	Integer ref2 = 0;
+	Integer ref3 = 0;
+	int benchmark1 = 0;
+	int benchmark2 = 0;
+	int benchmark3 = 0;
 	int len = userPicture.length;
 
 	for (Integer i : colorToPicture.keySet()) {
@@ -47,47 +51,63 @@ public class ColorPictureLibrary {
 
 	    for (int j = 0; j < len; j++) {
 		if (thisP.getC1().equals(userPicture[0])) {
-		    count ++;
+		    count++;
 		}
 		if (thisP.getC2().equals(userPicture[0])) {
-		    count ++;
+		    count++;
 		}
 		if (thisP.getC3().equals(userPicture[0])) {
-		    count ++;
+		    count++;
 		}
 		if (thisP.getC4().equals(userPicture[0])) {
-		    count ++;
+		    count++;
 		}
 		if (thisP.getC5().equals(userPicture[0])) {
-		    count ++;
+		    count++;
 		}
 	    }
 
-	    if (count > benchmark) {
-		ref = i;
-		benchmark = count;
+	    if (count > benchmark1) {
+		benchmark2 = benchmark1;
+		ref2 = ref1;
+		ref1 = i;
+		benchmark1 = count;
+	    }
+
+	    else if (count > benchmark2) {
+		benchmark3 = benchmark2;
+		ref3 = ref2;
+		ref2 = i;
+		benchmark2 = count;
+	    }
+
+	    else if (count > benchmark3) {
+		ref3 = i;
+		benchmark3 = count;
 	    }
 
 	}
 
-	Picture similarPic = colorToPicture.get(ref);
-	return similarPic.getPictureFileName();
+	Picture sP1 = colorToPicture.get(ref1);
+	Picture sP2 = colorToPicture.get(ref2);
+	Picture sP3 = colorToPicture.get(ref3);
+	return sP1.getPictureFileName()+","+sP2.getPictureFileName()+","+sP3.getPictureFileName();//TODO: remember to integerte with UX
     }
 
-    //TODO: replace this section with the section below. Now for test purpose, print out the colors read;
+    // TODO: replace this section with the section below. Now for test purpose,
+    // print out the colors read;
     public void printOutColors(HashMap<Integer, Picture> pictureLib) {
-		    for (Integer i : pictureLib.keySet()) {
-			System.out.print(i + ",");
-			Picture thisP = pictureLib.get(i);
-			System.out.print(thisP.getC1() + ",");
-			System.out.print(thisP.getC2() + ",");
-			System.out.print(thisP.getC3() + ",");
-			System.out.print(thisP.getC4() + ",");
-			System.out.print(thisP.getC5() + ",");
-		    }
+	for (Integer i : pictureLib.keySet()) {
+	    System.out.print(i + ",");
+	    Picture thisP = pictureLib.get(i);
+	    System.out.print(thisP.getC1() + ",");
+	    System.out.print(thisP.getC2() + ",");
+	    System.out.print(thisP.getC3() + ",");
+	    System.out.print(thisP.getC4() + ",");
+	    System.out.println(thisP.getC5() + ",");
+	}
     }
-    
-    
+
 //    // Method that write the resulted hash map to the CSV file.
 //    public void writeColorToCSV(HashMap<Integer, Picture> pictureLib) {
 //	File out = new File(libraryColorResult);

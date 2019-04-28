@@ -21,7 +21,7 @@ public class Picture {
 	
 	///Users/jasminejian/git/MCIT591ColorScheme/Pinterest
 	
-	pictureFileName = "Pinterest/p" + picRef + ".jpg";
+	pictureFileName = "Pictures/p" + picRef + ".jpg"; 
 	System.out.println(pictureFileName); //TODO: to be deleted
 	
 	ImageReading reader = new ImageReading(pictureFileName);

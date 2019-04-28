@@ -25,6 +25,7 @@ public class ImageReading {
 		}
 		image = img;
 		width = img.getWidth();
+		System.out.println(width);//TODO: remember to delted
 		height = img.getHeight();
 		numPixels = width * height;
 
