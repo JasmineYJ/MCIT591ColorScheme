@@ -12,29 +12,28 @@ public class Picture {
     private String c3;
     private String c4;
     private String c5;
+    private String c6; //TODO: change back to 5
     private String pictureFileName;
     private ColorNameLibrary CML;
-    private int numOfColor = 5; // TODO: remember to update this based on UI read;
+    private int numOfColor = 8; // TODO: remember to update this based on UI read; remeber to change it back, need to aggregate this input.
     private int roundOfIteration = 30; // TODO: change this number based on runtime and accuracy;
 
     public Picture(int picRef, ColorNameLibrary CNL) {
 	
-	///Users/jasminejian/git/MCIT591ColorScheme/Pinterest
-	
 	pictureFileName = "Pictures/p" + picRef + ".jpg";  
-	System.out.println(pictureFileName); //TODO: to be deleted
+	//System.out.println(pictureFileName); //TODO: to be deleted
 	
 	ImageReading reader = new ImageReading(pictureFileName);
 	int[][] colorResult = reader.getImageRGB();
 	int pixelNum = reader.getPixelNum();
 	KmeansCalculator kC = new KmeansCalculator(pixelNum, numOfColor, colorResult);
-
+ 
 	int[][] firstCenter = kC.firstPathCenter();
 	int[] label = kC.lablePixels(firstCenter);
 
 	// int[][] is the result containing the top N colors. Each row stores a color
 	int[][] result = new int[numOfColor][3];
-
+ 
 	int num = 0;
 	while (num < roundOfIteration) {
 	    result = kC.calculateCenter(label);
@@ -58,11 +57,16 @@ public class Picture {
 	    }
 	    if (i1 == 4) {
 		c4 = colorName;
-	    } else {
+	    }
+	    if (i1 == 5) {
 		c5 = colorName;
 	    }
+	    if (i1 == 6) {
+		c6 = colorName;
+	    }
+	    
 	}
-    }
+    } 
 
     // a different constructor which takes the result from Main result of the user
     // input
@@ -85,9 +89,14 @@ public class Picture {
 	    }
 	    if (i1 == 4) {
 		c4 = colorName;
-	    } else {
+	    }
+	    if (i1 == 5) {
 		c5 = colorName;
 	    }
+	    if (i1 == 6) {
+		c6 = colorName;
+	    }
+ 
 	}
     }
 
@@ -111,6 +120,11 @@ public class Picture {
 	return c5;
     }
 
+    public String getC6() {
+	return c6;
+    }
+
+    
     public String getPictureFileName() {
 	return pictureFileName;
     }

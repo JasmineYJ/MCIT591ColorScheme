@@ -40,31 +40,24 @@ public class ColorPictureLibrary {
 	Integer ref1 = 0;
 	Integer ref2 = 0;
 	Integer ref3 = 0;
-	int benchmark1 = 0;
-	int benchmark2 = 0;
-	int benchmark3 = 0;
+	int benchmark1 = 1;
+	int benchmark2 = 1;
+	int benchmark3 = 1;
 	int len = userPicture.length;
 
 	for (Integer i : colorToPicture.keySet()) {
 	    Integer count = 0;
 	    Picture thisP = colorToPicture.get(i);
 
-	    for (int j = 0; j < len; j++) {
-		if (thisP.getC1().equals(userPicture[0])) {
+	    // System.out.println(thisP.getPictureFileName()); //TODO: Remember to delete
+
+	    for (String s : userPicture) {
+
+		if (thisP.getC1().equals(s) | thisP.getC2().equals(s) | thisP.getC3().equals(s)
+			| thisP.getC4().equals(s) | thisP.getC5().equals(s) | thisP.getC6().equals(s)) {
 		    count++;
 		}
-		if (thisP.getC2().equals(userPicture[0])) {
-		    count++;
-		}
-		if (thisP.getC3().equals(userPicture[0])) {
-		    count++;
-		}
-		if (thisP.getC4().equals(userPicture[0])) {
-		    count++;
-		}
-		if (thisP.getC5().equals(userPicture[0])) {
-		    count++;
-		}
+
 	    }
 
 	    if (count > benchmark1) {
@@ -72,6 +65,8 @@ public class ColorPictureLibrary {
 		ref2 = ref1;
 		ref1 = i;
 		benchmark1 = count;
+		// System.out.println("benchmark1 now is " + benchmark1);// TODO: remmeber to
+		// delete
 	    }
 
 	    else if (count > benchmark2) {
@@ -79,11 +74,15 @@ public class ColorPictureLibrary {
 		ref3 = ref2;
 		ref2 = i;
 		benchmark2 = count;
+		// System.out.println("benchmark2 now is " + benchmark2);// TODO: remmeber to
+		// delete
 	    }
 
 	    else if (count > benchmark3) {
 		ref3 = i;
 		benchmark3 = count;
+		// System.out.println("benchmark3 now is " + benchmark3);// TODO: remmeber to
+		// delete
 	    }
 
 	}
@@ -91,22 +90,26 @@ public class ColorPictureLibrary {
 	Picture sP1 = colorToPicture.get(ref1);
 	Picture sP2 = colorToPicture.get(ref2);
 	Picture sP3 = colorToPicture.get(ref3);
-	return sP1.getPictureFileName()+","+sP2.getPictureFileName()+","+sP3.getPictureFileName();//TODO: remember to integerte with UX
+	return sP1.getPictureFileName() + "," + sP2.getPictureFileName() + "," + sP3.getPictureFileName();// TODO:
+													  // remember to
+													  // integerte
+													  // with UX
     }
 
     // TODO: replace this section with the section below. Now for test purpose,
     // print out the colors read;
     public void printOutColors(HashMap<Integer, Picture> pictureLib) {
 	for (Integer i : pictureLib.keySet()) {
-	    System.out.print(i + ",");
+	    System.out.print(i + ","); // TODO: Remember to delete
 	    Picture thisP = pictureLib.get(i);
 	    System.out.print(thisP.getC1() + ",");
 	    System.out.print(thisP.getC2() + ",");
 	    System.out.print(thisP.getC3() + ",");
 	    System.out.print(thisP.getC4() + ",");
-	    System.out.println(thisP.getC5() + ",");
+	    System.out.print(thisP.getC5() + ",");
+	    System.out.println(thisP.getC6());
 	}
-    }
+    } 
 
 //    // Method that write the resulted hash map to the CSV file.
 //    public void writeColorToCSV(HashMap<Integer, Picture> pictureLib) {

@@ -8,7 +8,7 @@ public class ColorInt {
     private String colorName;
     private int rValue;
     private int gValue;
-    private int  bValue;
+    private int bValue;
 
     public ColorInt(String cName, int rV, int gV, int bV) {
 	colorName = cName;

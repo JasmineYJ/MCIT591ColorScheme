@@ -1,5 +1,7 @@
 import java.util.Arrays;
 
+import com.sun.webkit.ThemeClient;
+
 public class SystemOutput {
 
 	public static void main(String[] args) {
@@ -7,7 +9,7 @@ public class SystemOutput {
 		/**
 		 * int color is the int N (top N color)
 		 */
-		int topN = 5;
+		int topN = 6; //TODO: change back to 5.
 		/**
 		 * construct a new ImageReading instance to read image
 		 */
@@ -19,7 +21,7 @@ public class SystemOutput {
 
 		/**
 		 * this int[][] result stores the top N color's RGB value. Each row is for one
-		 * color
+		 * color 
 		 */
 		int[][] result = k.calculateColor();
 		// the following few lines are for test only
@@ -34,18 +36,25 @@ public class SystemOutput {
 		 * the following block is to get name for each color in the int[][] result
 		 */
 		String[] colorNames = new String[topN];
+		
 		String tempName;
 		ColorNameLibrary cN = new ColorNameLibrary();
-		ColorPictureLibrary cP = new ColorPictureLibrary(cN);
-
+		
+		
+		
 		for (int i = 0; i < topN; i++) {
-			tempName = cN.getColorName(result[i][0], result[i][0], result[i][0]);
+			tempName = cN.getColorName(result[i][0], result[i][1], result[i][2]);
+			//System.out.println("The color " + i + " is "+ result[i][0]+","+result[i][1]+","+result[i][2]);
+			//System.out.println(tempName);
 			colorNames[i] = tempName;
 		}
 		// the following few lines are for test only
 		for(String s: colorNames) {
-			System.out.println(s);
+			//System.out.println(s);
 		}
+		System.out.println("The color results are "+Arrays.toString(colorNames)+".");//TODO: Remeber to delete
+		System.out.println("Compiling the 203 picture library. May take 10-15 Min."); // TODO: Remeber to delete
+		ColorPictureLibrary cP = new ColorPictureLibrary(cN);
 		
 		// the following lines are used for test the return of similar pic;
 		System.out.println(cP.similarPic(colorNames));

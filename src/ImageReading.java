@@ -13,7 +13,7 @@ public class ImageReading {
 	private int height;
 	private int numPixels;
 	private int[][] imageRGB;
-
+ 
 	public ImageReading(String add) {
 		address = add;
 
@@ -25,7 +25,6 @@ public class ImageReading {
 		}
 		image = img;
 		width = img.getWidth();
-		System.out.println(width);//TODO: remember to delted
 		height = img.getHeight();
 		numPixels = width * height;
 
