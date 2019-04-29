@@ -68,7 +68,20 @@ public class Picture {
 	}
     } 
 
-    // a different constructor which takes the result from Main result of the user
+    // One picture constructor which takes value from Picture Library csv file. 
+    public Picture(Integer i, String c1, String c2, String c3, String c4, String c5, String c6) {
+	pictureFileName = "Pictures/p" + i + ".jpg";
+	this.c1 = c1;
+	this.c2 = c2;
+	this.c3 = c3;
+	this.c4 = c4;
+	this.c5 = c5;
+	this.c6 = c6;
+    }
+    
+    
+    
+    // One picture constructor which takes the result from Main result of the user
     // input
     public Picture(int[][] userR) {
 	int num = 0;
