@@ -38,7 +38,7 @@ public class SystemOutput {
 		ColorNameLibrary cN = new ColorNameLibrary();
 
 		for (int i = 0; i < topN; i++) {
-			tempName = cN.getColorName(result[i][0], result[i][0], result[i][0]);
+			tempName = cN.getColorName(result[i][0], result[i][1], result[i][2]);
 			colorNames[i] = tempName;
 		}
 		// the following few lines are for test only
