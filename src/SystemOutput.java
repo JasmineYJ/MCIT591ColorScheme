@@ -44,11 +44,8 @@ public class SystemOutput {
 		
 		for (int i = 0; i < topN; i++) {
 			tempName = cN.getColorName(result[i][0], result[i][1], result[i][2]);
-<<<<<<< HEAD
-=======
 			//System.out.println("The color " + i + " is "+ result[i][0]+","+result[i][1]+","+result[i][2]);
 			//System.out.println(tempName);
->>>>>>> branch 'master' of https://github.com/JasmineYJ/MCIT591ColorScheme.git
 			colorNames[i] = tempName;
 		}
 		// the following few lines are for test only
