@@ -31,7 +31,7 @@ public class SystemOutput {
 //		System.out.print(result[i][2]);
 //		System.out.println();
 //	}
-
+  
 		/**
 		 * the following block is to get name for each color in the int[][] result
 		 */
@@ -50,8 +50,8 @@ public class SystemOutput {
 		for(String s: colorNames) {
 			System.out.println(s);
 		}
-		System.out.println("The color results are "+Arrays.toString(colorNames)+".");//TODO: Remeber to delete
-		System.out.println("Compiling the 203 picture library. May take 10-15 Min."); // TODO: Remeber to delete
+		//System.out.println("The color results are "+Arrays.toString(colorNames)+".");//TODO: Remeber to delete
+		//System.out.println("Compiling the 203 picture library. May take 10-15 Min."); // TODO: Remeber to delete
 		ColorPictureLibrary cP = new ColorPictureLibrary(cN);
 		
 		// the following lines are used for test the return of similar pic;

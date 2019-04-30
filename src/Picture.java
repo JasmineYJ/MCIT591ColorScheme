@@ -19,7 +19,7 @@ public class Picture {
     private int roundOfIteration = 30; // TODO: change this number based on runtime and accuracy;
 
     public Picture(int picRef, ColorNameLibrary CNL) {
-	
+	 
 	pictureFileName = "Pictures/p" + picRef + ".jpg";  
 	//System.out.println(pictureFileName); //TODO: to be deleted
 	
@@ -80,7 +80,7 @@ public class Picture {
     }
     
     
-    
+     
     // One picture constructor which takes the result from Main result of the user
     // input
     public Picture(int[][] userR) {

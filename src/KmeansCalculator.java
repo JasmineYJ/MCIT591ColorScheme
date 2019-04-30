@@ -211,7 +211,8 @@ public class KmeansCalculator {
 		 * iteratoinRounds here is dependent on the size of the image which is to be
 		 * calculated;
 		 */
-		int iterationRounds = 0;
+		int iterationRounds = 0;  
+		
 		if (totalPixels < 1000 * 1000) {
 			iterationRounds = 15;
 		} else if (totalPixels >= 1000 * 1000 && totalPixels <= 3000 * 3000) {
@@ -219,6 +220,8 @@ public class KmeansCalculator {
 		} else {
 			iterationRounds = 3;
 		}
+		
+		
 
 		while (i < iterationRounds) {
 			result = calculateCenter(label);
