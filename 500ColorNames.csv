@@ -96,7 +96,7 @@ Blue 3,0,0,255
 Blue 2,0,0,238
 Mediumblue,0,0,205
 Darkblue,0,0,139
-Navy*,0,0,128
+Navy,0,0,128
 Midnightblue,25,25,112
 Cobalt,61,89,171
 Royalblue,65,105,225
@@ -178,7 +178,7 @@ Cyan / Aqua*,0,255,255
 Cyan 2,0,238,238
 Cyan 3,0,205,205
 Darkcyan,0,139,139
-Teal*,0,128,128
+Teal,0,128,128
 Mediumturquoise,72,209,204
 Lightseagreen,32,178,170
 Manganeseblue,3,168,158
@@ -443,11 +443,11 @@ White 1,255,255,255
 White Smoke 2,245,245,245
 Gainsboro,220,220,220
 Lightgrey,211,211,211
-Silver*,192,192,192
+Silver,192,192,192
 Darkgray,169,169,169
 Gray 100,128,128,128
 Dimgray 1,105,105,105
-Black*,0,0,0
+Black,0,0,0
 Gray 99,252,252,252
 White Smoke 1,245,245,245
 Gray 95,242,242,242
