@@ -5,6 +5,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * This class is to read the an image. It will read through every pixel and
+ * store each pixel's RGB value to an 2d integer array. Also it will pass
+ * through this image's pixel numbers to the next class for processing.
+ */
+
 public class ImageReading {
 
 	private BufferedImage image = null;
@@ -13,7 +19,7 @@ public class ImageReading {
 	private int height;
 	private int numPixels;
 	private int[][] imageRGB;
- 
+
 	public ImageReading(String add) {
 		address = add;
 
