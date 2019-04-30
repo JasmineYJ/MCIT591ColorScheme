@@ -25,12 +25,12 @@ public class SystemOutput {
 		 */
 		int[][] result = k.calculateColor();
 		// the following few lines are for test only
-//		for (int i = 0; i < topN; i++) {
-//		System.out.print(result[i][0] + ",");
-//		System.out.print(result[i][1] + ",");
-//		System.out.print(result[i][2]);
-//		System.out.println();
-//	}
+		for (int i = 0; i < topN; i++) {
+		System.out.print(result[i][0] + ",");
+		System.out.print(result[i][1] + ",");
+		System.out.print(result[i][2]);
+		System.out.println();
+	}
 
 		/**
 		 * the following block is to get name for each color in the int[][] result
@@ -40,8 +40,6 @@ public class SystemOutput {
 		String tempName;
 		ColorNameLibrary cN = new ColorNameLibrary();
 		
-		
-		
 		for (int i = 0; i < topN; i++) {
 			tempName = cN.getColorName(result[i][0], result[i][1], result[i][2]);
 			//System.out.println("The color " + i + " is "+ result[i][0]+","+result[i][1]+","+result[i][2]);
@@ -50,7 +48,7 @@ public class SystemOutput {
 		}
 		// the following few lines are for test only
 		for(String s: colorNames) {
-			//System.out.println(s);
+			System.out.println(s);
 		}
 		System.out.println("The color results are "+Arrays.toString(colorNames)+".");//TODO: Remeber to delete
 		System.out.println("Compiling the 203 picture library. May take 10-15 Min."); // TODO: Remeber to delete
