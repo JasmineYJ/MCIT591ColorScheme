@@ -13,7 +13,7 @@ public class ImageReading {
 	private int height;
 	private int numPixels;
 	private int[][] imageRGB;
-
+ 
 	public ImageReading(String add) {
 		address = add;
 
