@@ -89,4 +89,8 @@ public class ImageReading {
 		return imageRGB;
 	}
 
+	public BufferedImage getImage() {
+		return image;
+	}
+
 }
