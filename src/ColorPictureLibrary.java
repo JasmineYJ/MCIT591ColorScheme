@@ -70,7 +70,7 @@ public class ColorPictureLibrary {
      * @param userPicture
      * @return
      */
-    public String similarPic(String[] userPicture) {
+    public ArrayList<String> similarPic(String[] userPicture) {
 	Integer ref1 = 0;
 	Integer ref2 = 0;
 	Integer ref3 = 0;
@@ -78,6 +78,8 @@ public class ColorPictureLibrary {
 	int benchmark2 = 1;
 	int benchmark3 = 1;
 	int len = userPicture.length;
+	
+	ArrayList<String> result = new ArrayList<String>();
 
 	for (Integer i : colorToPicture.keySet()) {
 	    Integer count = 0;
@@ -112,9 +114,16 @@ public class ColorPictureLibrary {
 	}
 
 	Picture sP1 = colorToPicture.get(ref1);
+	result.add(sP1.getPictureFileName());
 	Picture sP2 = colorToPicture.get(ref2);
+	result.add(sP2.getPictureFileName());
 	Picture sP3 = colorToPicture.get(ref3);
-	return sP1.getPictureFileName() + "," + sP2.getPictureFileName() + "," + sP3.getPictureFileName();// TODO:
+	result.add(sP3.getPictureFileName());
+	
+	return result;
+			
+			
+			//sP1.getPictureFileName() + "," + sP2.getPictureFileName() + "," + sP3.getPictureFileName();// TODO:
 	// remember to
 	// Integrate
 	// with UX
