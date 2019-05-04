@@ -115,7 +115,7 @@ public class InterfaceDesign {
 	             * Insert calculation and recommendation class in here 
 	             */
 	            
-	            int topN = numberOfRecon;
+	            int  topN = numberOfRecon;
 	          
 	            
 	            ImageReading image = new ImageReading(nameString);
@@ -148,12 +148,12 @@ public class InterfaceDesign {
 	    		ArrayList<String> picsAdd= cP.similarPic(colorNames);
 	    		
 	    		
-	    		DrawColorOfPicture drawColorOfPicture = new DrawColorOfPicture(result,colorNames,topN);
+	    		DrawColorOfPicture drawColorOfPicture = new DrawColorOfPicture(result,colorNames,topN,true);
 	    		
-	    		BufferedImage showColor = drawColorOfPicture.getResultsBufferedImage();
+	    		BufferedImage showColor = drawColorOfPicture.getProcessedImage();
 
 				  frame.dispose();
-				 DisplayResult(nameString, showColor, picsAdd);
+				 DisplayResult(nameString, showColor, picsAdd, topN);
 			}
 		});
 
@@ -189,14 +189,14 @@ public class InterfaceDesign {
 	 *  and to display recommended party image 
 	 */
 	
-	public void DisplayResult(String inputImageAdd, BufferedImage imageOfColor, ArrayList<String> nameOfPics) {
+	public void DisplayResult(String inputImageAdd, BufferedImage imageOfColor, ArrayList<String> nameOfPics, int topN) {
 
      		// read input image from the file 
 			ImageReading im = new ImageReading(inputImageAdd);
 			
 			BufferedImage userInputImage = im.getImage();
 		
-			int[] resizedUserInputImageDimention = CalculateDimention(300, 300, userInputImage);
+			int[] resizedUserInputImageDimention = CalculateDimention(450, 450, userInputImage);
 			//System.out.println(resizedUserInputImageDimention[0]);
 			 //System.out.println(resizedUserInputImageDimention[1]);
 			// call the scaleImage function to process input image and return resized image
@@ -205,35 +205,53 @@ public class InterfaceDesign {
 			// System.out.println(imageOfColor.getHeight());
 			 //System.out.println(imageOfColor.getWidth());
 			 
-		    int[] resizedColorOfImageDimention = CalculateDimention(300, 300, imageOfColor);
+		    int[] resizedColorOfImageDimention = CalculateDimention(450, 450, imageOfColor);
 		    
 		    BufferedImage resizedColorOfImage = scaleImage(imageOfColor, resizedColorOfImageDimention[0], resizedColorOfImageDimention[1]);
 			
 			
-		    ImageReading im2 = new ImageReading(nameOfPics.get(0));
-		    BufferedImage reconImage1 = im2.getImage();
+	
+		    ConnectImage connectImage1 = new ConnectImage(topN, nameOfPics.get(0));
+		    BufferedImage reconImage1 = connectImage1.getFinalImage();
 		    
+		    ConnectImage connectImage2 = new ConnectImage(topN, nameOfPics.get(1));
+		    BufferedImage reconImage2 = connectImage2.getFinalImage();
+		    
+		    ConnectImage connectImage3 = new ConnectImage(topN, nameOfPics.get(2));
+		    BufferedImage reconImage3 = connectImage3.getFinalImage();
+		    
+		    /*
 		    ImageReading im3 = new ImageReading(nameOfPics.get(1));
 		    BufferedImage reconImage2 = im3.getImage();
 		    
 		    ImageReading im4 = new ImageReading(nameOfPics.get(2));
 		    BufferedImage reconImage3 = im4.getImage();
 		    
-		    int[] resizedreconImage1Dimention = CalculateDimention(300, 300, reconImage1);
-		    int[] resizedreconImage2Dimention = CalculateDimention(300, 300, reconImage2);
-		    int[] resizedreconImage3Dimention = CalculateDimention(300, 300, reconImage3);
+		    ImageReading testImage = new ImageReading("white1.jpg");
+		    BufferedImage testBufferedImage = testImage.getImage();*/
+		    
+		  
+		    
+		    
+		    int[] resizedreconImage1Dimention = CalculateDimention(450, 450, reconImage1);
+		    int[] resizedreconImage2Dimention = CalculateDimention(450, 450, reconImage2);
+		    int[] resizedreconImage3Dimention = CalculateDimention(450, 450, reconImage3);
+		    //int[] resizeTest = CalculateDimention(300, 300, testBufferedImage);
 		 
 		 
 		    BufferedImage resizedreconImage1 = scaleImage(reconImage1, resizedreconImage1Dimention[0], resizedreconImage1Dimention[1]);
 		    BufferedImage resizedreconImage2 = scaleImage(reconImage2, resizedreconImage2Dimention[0], resizedreconImage2Dimention[1]);
 		    BufferedImage resizedreconImage3 = scaleImage(reconImage3, resizedreconImage3Dimention[0], resizedreconImage3Dimention[1]);
 		    
-		    
+		 //  BufferedImage testresizeBufferedImage = scaleImage(testBufferedImage, resizeTest[0], resizeTest[1]);
+		     
 		    ImageIcon iconUserInputImage = new ImageIcon(resizedUserInputImage);
 		    ImageIcon iconColorOfImage = new ImageIcon(resizedColorOfImage);
 		    ImageIcon iconReconImage1 = new ImageIcon(resizedreconImage1);
 		    ImageIcon iconReconImage2 = new ImageIcon(resizedreconImage2);
 		    ImageIcon iconReconImage3 = new ImageIcon(resizedreconImage3);
+		    
+		  //  ImageIcon testIcon = new ImageIcon(testresizeBufferedImage);
    
 			// Create frame and panel for UI
 			JFrame frame1 = new JFrame();
@@ -272,7 +290,7 @@ public class InterfaceDesign {
 		    JLabel recomImage2 = new JLabel();
 		    JLabel recomImage3 = new JLabel();
 		    
-		    
+		    JLabel testJLabel = new JLabel();
 		    
 			labelImage1.setIcon(iconUserInputImage);
 			labelRecomCol.setIcon(iconColorOfImage);
@@ -281,6 +299,7 @@ public class InterfaceDesign {
 			recomImage2.setIcon(iconReconImage2);
 			recomImage3.setIcon(iconReconImage3);
 			
+			//testJLabel.setIcon(testIcon);
 			
 		    panelWest.add(labelImage1,BorderLayout.CENTER);
 		    panelWest.add(labelRecomCol,BorderLayout.EAST);
@@ -300,7 +319,7 @@ public class InterfaceDesign {
 		
 			
 	        
-			frame1.setSize(new Dimension(1200, 420));
+			frame1.setSize(new Dimension(1200, 600));
 			frame1.setLocationRelativeTo(null);
 			frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame1.setTitle("Orginal Input Image");

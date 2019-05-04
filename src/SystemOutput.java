@@ -1,4 +1,10 @@
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Arrays;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import com.sun.webkit.ThemeClient;
 
@@ -9,21 +15,36 @@ public class SystemOutput {
 		/**
 		 * int color is the int N (top N color)
 		 */
-		int topN = 6; //TODO: change back to 5.
+		//  //TODO: change back to 5.
 		/**
 		 * construct a new ImageReading instance to read image
 		 */
+		
+		 InterfaceDesign uInterfaceDesign = new InterfaceDesign();
+		/*
+		ImageReading imageReading = new ImageReading("white.jpg");
+		BufferedImage whiteImage  = imageReading.getImage();
+		ArrayList<String> addArrayList = new ArrayList<String>();
+		addArrayList.add("Pictures/p1.jpg");
+		addArrayList.add("Pictures/p10.jpg");
+		addArrayList.add("Pictures/p100.jpg");
+		uInterfaceDesign.DisplayResult("test_image.jpg", whiteImage, addArrayList);*/
+		
+		/*
+	
+		int topN = 6;
+		
 		ImageReading image = new ImageReading("test_image.jpg");
 		int[][] testI = image.getImageRGB();
 		int pixelNum = image.getPixelNum();
 
-		KmeansCalculator k = new KmeansCalculator(pixelNum, topN, testI);
+		KmeansCalculator k = new KmeansCalculator(pixelNum, topN, testI);*/
 
 		/**
 		 * this int[][] result stores the top N color's RGB value. Each row is for one
 		 * color 
 		 */
-		int[][] result = k.calculateColor();
+		//int[][] result = k.calculateColor(); 
 		// the following few lines are for test only
 //		for (int i = 0; i < topN; i++) {
 //		System.out.print(result[i][0] + ",");
@@ -35,6 +56,8 @@ public class SystemOutput {
 		/**
 		 * the following block is to get name for each color in the int[][] result
 		 */
+		
+		/*
 		String[] colorNames = new String[topN];
 		
 		String tempName;
@@ -42,7 +65,7 @@ public class SystemOutput {
 		
 		for (int i = 0; i < topN; i++) {
 			tempName = cN.getColorName(result[i][0], result[i][1], result[i][2]);
-			//System.out.println("The color " + i + " is "+ result[i][0]+","+result[i][1]+","+result[i][2]);
+			System.out.println("The color " + i + " is "+ result[i][0]+","+result[i][1]+","+result[i][2]);
 			//System.out.println(tempName);
 			colorNames[i] = tempName;
 		}
@@ -57,6 +80,23 @@ public class SystemOutput {
 		// the following lines are used for test the return of similar pic;
 		System.out.println(cP.similarPic(colorNames));
 
-	}
+		//DrawColorOfPicture drawColorOfPicture = new DrawColorOfPicture(result, colorNames, topN, false);
+         //BufferedImage showBufferedImage = drawColorOfPicture.getProcessedImage();
+       ConnectImage connectImage = new ConnectImage(topN, "test.jpg");
+       BufferedImage showBufferedImage = connectImage.getFinalImage();
+		
+		 ImageIcon iconUserInputImage = new ImageIcon(showBufferedImage);
+		 JLabel labelImage1 = new JLabel();
+		 labelImage1.setIcon(iconUserInputImage);
+		JFrame frame = new JFrame("Rectangles");
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(labelImage1);
+		frame.setSize(385, 600);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true); */
+		
+		
+	} 
 
 }
