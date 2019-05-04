@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.nio.channels.NonReadableChannelException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -69,13 +70,13 @@ public class InterfaceDesign {
 		c.anchor = GridBagConstraints.LINE_START;
 		frame.getContentPane().add(panel);
 
-		label1 = new JLabel("Please Enter Name of The Input Image: ");
-		label1.setFont(label1.getFont().deriveFont(14.0f));
+		label1 = new JLabel("Please enter the name of your image (e.g. p10.jpg) : ");
+		label1.setFont(label1.getFont().deriveFont(12.0f));
 		panel.add(label1,c);
 		c.gridy++;
 
-		label2 = new JLabel("Please Enter A Number of Recommened Color: ");
-		label2.setFont(label1.getFont().deriveFont(14.0f));
+		label2 = new JLabel("Number of colors you wish to see (from 3 to 5) : ");
+		label2.setFont(label1.getFont().deriveFont(12.0f));
 		panel.add(label2,c);
 		c.gridy++;
 		
@@ -145,7 +146,9 @@ public class InterfaceDesign {
 	    		
 	    		ColorPictureLibrary cP = new ColorPictureLibrary(cN);
 	    		
-	    		ArrayList<String> picsAdd= cP.similarPic(colorNames);
+	    		ArrayList<String> picsAdd= new ArrayList<String>(); 
+	    			
+	    		picsAdd.addAll((Collection<? extends String>) cP.similarPic(colorNames));
 	    		
 	    		
 	    		DrawColorOfPicture drawColorOfPicture = new DrawColorOfPicture(result,colorNames,topN,true);
@@ -277,11 +280,11 @@ public class InterfaceDesign {
 		    panel.add(panelEast,BorderLayout.EAST);
 		 
 		    
-		    JLabel label1 = new JLabel("Input Image:");
-		    JLabel label2 = new JLabel("Recommendation Images:");
+		    JLabel label1 = new JLabel("Your image : ");
+		    JLabel label2 = new JLabel("Our recommendations : ");
 		
-		    label1.setFont(label1.getFont().deriveFont(23.0f));
-		    label2.setFont(label1.getFont().deriveFont(23.0f));
+		    label1.setFont(label1.getFont().deriveFont(18.0f));
+		    label2.setFont(label1.getFont().deriveFont(18.0f));
 		    
 		    JLabel labelImage1 = new JLabel();
 		    JLabel labelRecomCol = new JLabel();
