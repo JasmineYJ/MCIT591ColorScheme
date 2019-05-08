@@ -68,7 +68,7 @@ public class InterfaceDesign {
 		panel.add(label1, c);
 		c.gridy++;
 
-		label2 = new JLabel("Number of colors you wish to see (from 3 to 5) : ");
+		label2 = new JLabel("Number of colors you wish to see (from 5 to 7) : ");
 		label2.setFont(label1.getFont().deriveFont(12.0f));
 		panel.add(label2, c);
 		c.gridy++;
