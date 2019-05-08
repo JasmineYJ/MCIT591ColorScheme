@@ -1,9 +1,11 @@
 /**
- * Each picture has 5 color names attach to it. Subject to change. But i think
- * even single color should have 5 colors? Black, white, light grey, dark grey
- * etc. TODO: should test out with single color pic && consider add more colors;
- * 
- * @author jasminejian
+ * This class included two constructors one for reading the 200 images during 
+ * developing process and one for read out the data stored in the generated file.
+ * Given that we have 500 color names (much much more than the number of pictures,
+ * including more color clusters increasing the chance we get a better match. Round
+ * of iteration was set as 50 during development, so that we made sure the data 
+ * stored for picture library is the most accurate.  
+
  */
 
 public class Picture {
@@ -12,28 +14,35 @@ public class Picture {
     private String c3;
     private String c4;
     private String c5;
-    private String c6; //TODO: change back to 5
+    private String c6;
     private String pictureFileName;
     private ColorNameLibrary CML;
-    private int numOfColor = 8; // TODO: remember to update this based on UI read; remeber to change it back, need to aggregate this input.
-    private int roundOfIteration = 30; // TODO: change this number based on runtime and accuracy;
+    private int numOfColor = 8;
+
+    private int roundOfIteration = 30;
+
+    /**
+     * This class was used to read through the 200 pictures pulled
+     * To ensure the most accurate results to be stored in our CSV file, the
+     * iteration and number of colors are higher than what are used for user input.
+     */
 
     public Picture(int picRef, ColorNameLibrary CNL) {
-	 
-	pictureFileName = "Pictures/p" + picRef + ".jpg";  
-	//System.out.println(pictureFileName); //TODO: to be deleted
-	
+
+	pictureFileName = "Pictures/p" + picRef + ".jpg";
+
+	// System.out.println(pictureFileName);
+
 	ImageReading reader = new ImageReading(pictureFileName);
 	int[][] colorResult = reader.getImageRGB();
 	int pixelNum = reader.getPixelNum();
 	KmeansCalculator kC = new KmeansCalculator(pixelNum, numOfColor, colorResult);
- 
+
 	int[][] firstCenter = kC.firstPathCenter();
 	int[] label = kC.lablePixels(firstCenter);
 
-	// int[][] is the result containing the top N colors. Each row stores a color
-	int[][] result = new int[numOfColor][3];
- 
+	int[][] result = new int[numOfColor][3]; // Each row represents a color;
+
 	int num = 0;
 	while (num < roundOfIteration) {
 	    result = kC.calculateCenter(label);
@@ -46,29 +55,20 @@ public class Picture {
 	    int gValue = result[i1][1];
 	    int bValue = result[i1][2];
 	    String colorName = CNL.getColorName(rValue, gValue, bValue);
-	    if (i1 == 1) {
-		c1 = colorName;
-	    }
-	    if (i1 == 2) {
-		c2 = colorName;
-	    }
-	    if (i1 == 3) {
-		c3 = colorName;
-	    }
-	    if (i1 == 4) {
-		c4 = colorName;
-	    }
-	    if (i1 == 5) {
-		c5 = colorName;
-	    }
-	    if (i1 == 6) {
-		c6 = colorName;
-	    }
-	    
+	    if (i1 == 1) {c1 = colorName;}
+	    if (i1 == 2) {c2 = colorName;}
+	    if (i1 == 3) {c3 = colorName;}
+	    if (i1 == 4) {c4 = colorName;}
+	    if (i1 == 5) {c5 = colorName;}
+	    if (i1 == 6) {c6 = colorName;}
 	}
-    } 
+    }
 
-    // One picture constructor which takes value from Picture Library csv file. 
+    /**
+     * This constructor takes the color names that we previously read and stored to
+     * the generated file.
+     */
+
     public Picture(Integer i, String c1, String c2, String c3, String c4, String c5, String c6) {
 	pictureFileName = "Pictures/p" + i + ".jpg";
 	this.c1 = c1;
@@ -78,11 +78,14 @@ public class Picture {
 	this.c5 = c5;
 	this.c6 = c6;
     }
-    
-    
-     
-    // One picture constructor which takes the result from Main result of the user
-    // input
+
+    /**
+     * This constructor takes the result of user input from main. Slightly different
+     * from the picture library as it is from CSV file.
+     * 
+     * @param userR
+     */
+
     public Picture(int[][] userR) {
 	int num = 0;
 
@@ -91,25 +94,13 @@ public class Picture {
 	    int gValue = userR[i1][1];
 	    int bValue = userR[i1][2];
 	    String colorName = CML.getColorName(rValue, gValue, bValue);
-	    if (i1 == 1) {
-		c1 = colorName;
-	    }
-	    if (i1 == 2) {
-		c2 = colorName;
-	    }
-	    if (i1 == 3) {
-		c3 = colorName;
-	    }
-	    if (i1 == 4) {
-		c4 = colorName;
-	    }
-	    if (i1 == 5) {
-		c5 = colorName;
-	    }
-	    if (i1 == 6) {
-		c6 = colorName;
-	    }
- 
+	    if (i1 == 1) {c1 = colorName;}
+	    if (i1 == 2) {c2 = colorName;}
+	    if (i1 == 3) {c3 = colorName;}
+	    if (i1 == 4) {c4 = colorName;}
+	    if (i1 == 5) {c5 = colorName;}
+	    if (i1 == 6) {c6 = colorName;}
+
 	}
     }
 
@@ -137,7 +128,6 @@ public class Picture {
 	return c6;
     }
 
-    
     public String getPictureFileName() {
 	return pictureFileName;
     }
