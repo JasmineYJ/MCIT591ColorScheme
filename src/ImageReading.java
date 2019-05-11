@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import org.omg.CosNaming.NamingContextPackage.CannotProceed;
+
 /**
  * This class is to read the an image. It will read through every pixel and
  * store each pixel's RGB value to an 2d integer array. Also it will pass
@@ -28,6 +30,7 @@ public class ImageReading {
 		try {
 			img = ImageIO.read(imageFile);
 		} catch (IOException e) {
+			System.out.println("Name address is not correct");
 		}
 		image = img;
 		width = img.getWidth();
@@ -64,7 +67,7 @@ public class ImageReading {
 		imageRGB = RGB;
 	}
 
-	/** convert a byte array to an integer array */
+	/** This method is to convert a byte array to an integer array */
 	private static int[] byteArrayIntoIntArray(byte[] s) {
 		int[] rgb = new int[s.length];
 		for (int i = 0; i < s.length; i++) {
