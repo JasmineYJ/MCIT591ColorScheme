@@ -13,9 +13,9 @@ Primarily working on the user interface part. Zikai was working on the following
 ConnectImage.java; DrawColorOfPicture.java; InterfaceDesign.java; ImageReading.java
 
 Yue Jian (Jasmine Jian)
-Primarily working on the color name library and picture library. Jasmine was working on the following classes:
+Primarily working on color name library, picture library and recommending pictures. Jasmine was working on the following classes:
 ColorInt.java; ColorNameLibrary.java; ColorNameLibraryTest.java; ColorPictureLibrary.java; ColorPictureLibraryTest.java; Picture.java
 
 Yuhong Du
-Primarily working on image reading and calculation of topN colors. Yuhong was working on the following classes:
+Primarily working on image reading and K-means calculator of topN colors. Yuhong was working on the following classes:
 ImageReading.java; KmeansCalculator.java; KmeansCalculatorTest.java; ColorRectangle.java
