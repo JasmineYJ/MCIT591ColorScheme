@@ -26,7 +26,7 @@ public class MainMethodRun {
  */
 
 /*
- * ImageReading imageReading = new ImageReading("white.jpg"); BufferedImage
+ * ImageReading imageReading = new ImageReading("white.jpg"); BufferedImage 
  * whiteImage = imageReading.getImage(); ArrayList<String> addArrayList = new
  * ArrayList<String>(); addArrayList.add("Pictures/p1.jpg");
  * addArrayList.add("Pictures/p10.jpg"); addArrayList.add("Pictures/p100.jpg");

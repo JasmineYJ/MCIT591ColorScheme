@@ -9,7 +9,7 @@ import java.io.*;
  * file to improve the processing time (i.e. we only process the user input
  * instead of looping through all 200 pictures). Please note that the
  * performance of this program will improve by expanding the picture library, as
- * we have 500 color names versus 200 pictures).
+ * we have 500 color names versus 200 pictures). 
  *
  */
 

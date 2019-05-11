@@ -9,7 +9,7 @@ class KmeansCalculatorTest {
 	void testFirstPathCenter() {
 		/**
 		 * "test_image.jpg" is the name of the image used for testing
-		 * the test image is 453 x 777 pixels
+		 * the test image is 453 x 777 pixels 
 		 */
 		ImageReading i = new ImageReading("test_image.jpg");
 		int[][] testI = i.getImageRGB();

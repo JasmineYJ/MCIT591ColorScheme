@@ -371,7 +371,7 @@ public class InterfaceDesign {
 	}
 
 }
-/*
+/* 
  * class Listener implements ListSelectionListener{
  * 
  * private ListModel listModel; private ImagePane imagePane; public

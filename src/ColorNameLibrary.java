@@ -14,7 +14,7 @@ import java.awt.Color;
  * we can't find a name for this given color within the threshold, we increment
  * the threshold until we find one; this method will be called by the picture
  * library class also, so that we can get the top five color name from the the
- * repository.
+ * repository. 
  */
 
 public class ColorNameLibrary {

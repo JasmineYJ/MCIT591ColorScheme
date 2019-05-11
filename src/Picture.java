@@ -5,7 +5,7 @@
  * including more color clusters increasing the chance we get a better match. Round
  * of iteration was set as 50 during development, so that we made sure the data 
  * stored for picture library is the most accurate.  
-
+ 
  */
 
 public class Picture {
