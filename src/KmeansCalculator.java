@@ -251,15 +251,5 @@ public class KmeansCalculator {
 
 		int[][] result = k.calculateColor();
 
-		/**
-		 * construct a rectangle to display the calculated color.
-		 */
-		ColorRectangle rects = new ColorRectangle(result, 180, 400, topN);
-		JFrame frame = new JFrame("Rectangles");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(rects);
-		frame.setSize(360, 300);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
 	}
 }
