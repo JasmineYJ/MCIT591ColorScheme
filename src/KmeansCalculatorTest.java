@@ -8,8 +8,7 @@ class KmeansCalculatorTest {
 	@Test
 	void testFirstPathCenter() {
 		/**
-		 * "test_image.jpg" is the name of the image used for testing
-		 * the test image is 453 x 777 pixels
+		 * "test_image.jpg" is the name of the image used for testing the test image is
 		 */
 		ImageReading i = new ImageReading("test_image.jpg");
 		int[][] testI = i.getImageRGB();
@@ -63,7 +62,7 @@ class KmeansCalculatorTest {
 			}
 		}
 	}
-	
+
 	@Test
 	void testGetRGBPattern() {
 		/**
@@ -71,7 +70,7 @@ class KmeansCalculatorTest {
 		 */
 		ImageReading i = new ImageReading("test_image.jpg");
 		int[][] testI = i.getImageRGB();
-		int[] testColor = {212,180,196};
+		int[] testColor = { 212, 180, 196 };
 		int pixelNum = i.getPixelNum();
 		KmeansCalculator k = new KmeansCalculator(pixelNum, 5, testI);
 		int[] pattern = k.getRGBPattern(testColor);
@@ -79,7 +78,7 @@ class KmeansCalculatorTest {
 		assertEquals(pattern[1], 1);
 		assertEquals(pattern[2], 2);
 	}
-	
+
 	@Test
 	void testCalculateColor() {
 		/**
