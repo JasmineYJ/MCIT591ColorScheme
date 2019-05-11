@@ -37,6 +37,7 @@ public class ColorRectangle extends JPanel {
 	public void paintComponent(Graphics g) {
 		for (int i = 0; i < result.length; i++) {
 			g.setColor(new Color(result[i][0], result[i][1], result[i][2]));
+			System.out.println(result[i][0]);
 			int eachRectHeight = height / topN;
 			/**
 			 * 20,20 is to set the starting point. 5 controls the distance between each
@@ -46,6 +47,9 @@ public class ColorRectangle extends JPanel {
 		}
 	}
 
+	
+	
+	
 	public static void main(String[] args) {
 		int topN = 5;
 		/**

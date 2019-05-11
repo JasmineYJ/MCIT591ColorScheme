@@ -64,7 +64,7 @@ public class ImageReading {
 		imageRGB = RGB;
 	}
 
-	/** This method is to convert a byte array to an integer array */
+	/** convert a byte array to an integer array */
 	private static int[] byteArrayIntoIntArray(byte[] s) {
 		int[] rgb = new int[s.length];
 		for (int i = 0; i < s.length; i++) {

@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 
-import javax.swing.JFrame;
-
 /**
  * This class is utilizing K-means algorithm to calculate the top N colors for
  * an given image. The input information will be the integer array which stores
@@ -213,8 +211,8 @@ public class KmeansCalculator {
 		 * iteratoinRounds here is dependent on the size of the image which is to be
 		 * calculated;
 		 */
-		int iterationRounds = 0;
-
+		int iterationRounds = 0;  
+		
 		if (totalPixels < 1000 * 1000) {
 			iterationRounds = 15;
 		} else if (totalPixels >= 1000 * 1000 && totalPixels <= 3000 * 3000) {
@@ -222,6 +220,8 @@ public class KmeansCalculator {
 		} else {
 			iterationRounds = 3;
 		}
+		
+		
 
 		while (i < iterationRounds) {
 			result = calculateCenter(label);
@@ -233,14 +233,13 @@ public class KmeansCalculator {
 
 	public static void main(String[] args) {
 		/**
-		 * Here is to test the k-means calculator; int color is the int N (top N color),
-		 * it can be any positive integer
+		 * int color is the int N (top N color)
 		 */
-		int topN = 9;
+		int topN = 5;
 		/**
 		 * construct a new ImageReading instance to read image
 		 */
-		ImageReading image = new ImageReading("test_image_2.jpg");
+		ImageReading image = new ImageReading("test_image.jpg");
 		int[][] testI = image.getImageRGB();
 		int pixelNum = image.getPixelNum();
 
@@ -248,15 +247,12 @@ public class KmeansCalculator {
 
 		int[][] result = k.calculateColor();
 
-		/**
-		 * construct a rectangle to display the calculated color.
-		 */
-		ColorRectangle rects = new ColorRectangle(result, 180, 400, topN);
-		JFrame frame = new JFrame("Rectangles");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(rects);
-		frame.setSize(360, 300);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		// here is to print the result color, for test only
+		for (int i = 0; i < topN; i++) {
+			System.out.print(result[i][0] + ",");
+			System.out.print(result[i][1] + ",");
+			System.out.print(result[i][2]);
+			System.out.println();
+		}
 	}
 }
