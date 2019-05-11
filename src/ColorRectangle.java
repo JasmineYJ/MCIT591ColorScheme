@@ -21,7 +21,7 @@ public class ColorRectangle extends JPanel {
 	 * which store topN color's RGB value. int width is for the total width of the
 	 * color display; int height is for the total height of the color display; int
 	 * topN is the same as the the topN from K-means calculator, which is got from
-	 * the user. 
+	 * the user.
 	 */
 	public ColorRectangle(int[][] result, int width, int height, int topN) {
 		this.result = result;

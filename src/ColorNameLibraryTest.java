@@ -6,7 +6,7 @@ class ColorNameLibraryTest {
 
     /**
      * Test that the correct color name is given for the same R,G,B value that we
-     * have in the color name file. 
+     * have in the color name file.
      */
 
     @Test

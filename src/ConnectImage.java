@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import javafx.scene.control.TableView.ResizeFeatures;
 
-public class ConnectImage { 
+public class ConnectImage {
       private int topN;
       BufferedImage finalImage ;
 	

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class ColorPictureLibraryTest {
 
     /**
-     * See if the correct picture got recommended with 6 same colors. 
+     * See if the correct picture got recommended with 6 same colors.
      */
 
     @Test
