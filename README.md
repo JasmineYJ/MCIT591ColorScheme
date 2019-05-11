@@ -15,7 +15,7 @@ We empower our user with the ability to focus by extracting the top N colors (N 
 
 * For the ease of use, we combined all the functions in one file -- MainMethodRun.java.
 * If you hit “run” in MainMethodRun.java, you will be prompted to enter the name of your image and an integer (should be ranged from 5 to 7) which indicates how many colors you want to get in the color scheme.
-* The format of image name should be “xxx.jpg”, also the image needs to be in the same project folder. There are 11 sample test images in our java folder for your use, they are pretty cute pictures.
+* The format of image name should be “xxx.jpg”, also the image needs to be in the same project folder. There are 11 sample test images in our java folder for your use.
 * To get the optimized result for the recommended images, we set the range of user input integer to be 5-7.
 * Hope you enjoy our color scheme program.
 
