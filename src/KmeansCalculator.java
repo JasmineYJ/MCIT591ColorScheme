@@ -235,7 +235,7 @@ public class KmeansCalculator {
 		/**
 		 * Here is to test the k-means calculator; int color is the int N (top N color)
 		 */
-		int topN = 5;
+		int topN = 8;
 		/**
 		 * construct a new ImageReading instance to read image
 		 */
