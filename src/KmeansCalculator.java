@@ -234,22 +234,4 @@ public class KmeansCalculator {
 		return result;
 	}
 
-	
-	public static void main(String[] args) {
-		/**
-		 * int color is the int N (top N color), it can be any positive integer
-		 */
-		int topN = 8;
-		/**
-		 * construct a new ImageReading instance to read image
-		 */
-		ImageReading image = new ImageReading("test_image.jpg");
-		int[][] testI = image.getImageRGB();
-		int pixelNum = image.getPixelNum();
-
-		KmeansCalculator k = new KmeansCalculator(pixelNum, topN, testI);
-
-		int[][] result = k.calculateColor();
-
-	}
 }
