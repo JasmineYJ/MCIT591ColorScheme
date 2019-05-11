@@ -47,9 +47,6 @@ public class ColorRectangle extends JPanel {
 		}
 	}
 
-	
-	
-	
 	public static void main(String[] args) {
 		int topN = 5;
 		/**
