@@ -233,7 +233,8 @@ public class KmeansCalculator {
 
 	public static void main(String[] args) {
 		/**
-		 * Here is to test the k-means calculator; int color is the int N (top N color)
+		 * Here is to test the k-means calculator; int color is the int N (top N color),
+		 * it can be any positive integer
 		 */
 		int topN = 8;
 		/**
