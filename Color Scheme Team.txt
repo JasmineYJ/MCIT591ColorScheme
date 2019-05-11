@@ -1,0 +1,21 @@
+PROJECT NAME:
+Color Scheme 
+
+GITHUB REPOSITORY:
+https://github.com/JasmineYJ/MCIT591ColorScheme.git
+
+PROJECT DESCRIPTION:
+Our program will generate a color scheme, which is calculated from the image user uploaded. Also, users have control over how many colors they want in the color scheme (in this phase we set the range to be 5-7). Besides the color scheme, we will recommend 3 images which have similar color scheme to user¡¯s original image.
+
+TASK BREAKDOWN:
+Zikai Xu
+Primarily working on the user interface part. Zikai was working on the following classes:
+ConnectImage.java; DrawColorOfPicture.java; InterfaceDesign.java; ImageReading.java
+
+Yue Jian (Jasmine Jian)
+Primarily working on the color name library and picture library. Jasmine was working on the following classes:
+ColorInt.java; ColorNameLibrary.java; ColorNameLibraryTest.java; ColorPictureLibrary.java; ColorPictureLibraryTest.java; Picture.java
+
+Yuhong Du
+Primarily working on image reading and calculation of topN colors. Yuhong was working on the following classes:
+ImageReading.java; KmeansCalculator.java; KmeansCalculatorTest.java; ColorRectangle.java
