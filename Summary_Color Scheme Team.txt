@@ -5,7 +5,7 @@ GITHUB REPOSITORY:
 https://github.com/JasmineYJ/MCIT591ColorScheme.git
 
 PROJECT DESCRIPTION:
-Our program will generate a color scheme, which is calculated from the image user uploaded. Also, users have control over how many colors they want in the color scheme (in this phase we set the range to be 5-7). Besides the color scheme, we will recommend 3 images which have similar color scheme to user¡¯s original image.
+Our program will generate a color scheme, which is calculated from the image user uploaded. Also, users have control over how many colors they want in the color scheme (in this phase we set the range to be 5-7). Besides the color scheme, we will recommend 3 images which have similar color scheme to userÂ¡Â¯s original image.
 
 TASK BREAKDOWN:
 Zikai Xu
