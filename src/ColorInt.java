@@ -1,7 +1,7 @@
 /**
  * Color itself is a primitive type. In order to use a Hash Map, need to have a
  * separate class to hold the R, G, B value for each color and map it to
- * corresponding names.    
+ * corresponding names.
  *
  */
 

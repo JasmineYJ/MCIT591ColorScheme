@@ -57,6 +57,8 @@ public class InterfaceDesign {
 		JPanel panel = new JPanel(new GridBagLayout());
 
 		GridBagConstraints c = new GridBagConstraints();
+		panel.setBackground(Color.BLACK);
+
 
 		c.gridx = 0;
 		c.gridy = 0;
@@ -65,11 +67,13 @@ public class InterfaceDesign {
 
 		label1 = new JLabel("Please enter the name of your image (e.g. p10.jpg) : ");
 		label1.setFont(label1.getFont().deriveFont(12.0f));
+		label1.setForeground(Color.WHITE);
 		panel.add(label1, c);
 		c.gridy++;
 
-		label2 = new JLabel("Number of colors you wish to see (from 5 to 7) : ");
+		label2 = new JLabel("Number of colors you wish to see (from 3 to 5) : ");
 		label2.setFont(label1.getFont().deriveFont(12.0f));
+		label2.setForeground(Color.WHITE);
 		panel.add(label2, c);
 		c.gridy++;
 
@@ -137,8 +141,11 @@ public class InterfaceDesign {
 
 				ArrayList<String> picsAdd = new ArrayList<String>();
 
-				picsAdd.addAll((Collection<? extends String>) cP.similarPic(colorNames));
+				picsAdd =  cP.similarPic(colorNames);
 
+				//System.out.println(picsAdd.get(0));
+				//System.out.println(picsAdd.get(1));
+				//System.out.println(picsAdd.get(2));
 				DrawColorOfPicture drawColorOfPicture = new DrawColorOfPicture(result, colorNames, topN, true);
 
 				BufferedImage showColor = drawColorOfPicture.getProcessedImage();
@@ -165,7 +172,7 @@ public class InterfaceDesign {
 		frame.setSize(new Dimension(500, 120));
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Color Recommendation");
+		frame.setTitle("Color Scheme");
 
 		frame.setVisible(true);
 
@@ -249,8 +256,10 @@ public class InterfaceDesign {
 		// Set Boarder Layout for the panel design
 		panel.setLayout(new BorderLayout());
 		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		panel.setBackground(Color.black);
 
 		frame1.getContentPane().add(panel);
+		frame1.getContentPane().setBackground(Color.black);
 
 		// Design west of the panel
 
@@ -262,11 +271,17 @@ public class InterfaceDesign {
 		panel.add(panelCener, BorderLayout.CENTER);
 		panel.add(panelEast, BorderLayout.EAST);
 
+		panelWest.setBackground(Color.black);
+		panelCener.setBackground(Color.black);
+		panelEast.setBackground(Color.black);
+
 		JLabel label1 = new JLabel("Your image : ");
 		JLabel label2 = new JLabel("Our recommendations : ");
 
-		label1.setFont(label1.getFont().deriveFont(18.0f));
-		label2.setFont(label1.getFont().deriveFont(18.0f));
+		label1.setFont(label1.getFont().deriveFont(20.0f));
+		label2.setFont(label1.getFont().deriveFont(20.0f));
+		label1.setForeground(Color.WHITE);
+		label2.setForeground(Color.WHITE);
 
 		JLabel labelImage1 = new JLabel();
 		JLabel labelRecomCol = new JLabel();
@@ -275,7 +290,7 @@ public class InterfaceDesign {
 		JLabel recomImage2 = new JLabel();
 		JLabel recomImage3 = new JLabel();
 
-		JLabel testJLabel = new JLabel();
+
 
 		labelImage1.setIcon(iconUserInputImage);
 		labelRecomCol.setIcon(iconColorOfImage);
@@ -301,7 +316,8 @@ public class InterfaceDesign {
 		frame1.setSize(new Dimension(1200, 600));
 		frame1.setLocationRelativeTo(null);
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame1.setTitle("Orginal Input Image");
+		frame1.setTitle("Reuslt");
+
 
 		frame1.setVisible(true);
 
@@ -371,7 +387,7 @@ public class InterfaceDesign {
 	}
 
 }
-/* 
+/*
  * class Listener implements ListSelectionListener{
  * 
  * private ListModel listModel; private ImagePane imagePane; public
