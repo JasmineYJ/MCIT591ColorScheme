@@ -33,6 +33,15 @@ import javax.swing.event.ListSelectionListener;
 
 import com.sun.prism.Graphics;
 
+/*
+ * This class mainly focus on UI design.
+ * It read user input and send input data to other classes to process;
+ * then, receive returned result from other class; 
+ * finally, integrated all returned results in one window frame.
+ * 
+ */
+
+
 public class InterfaceDesign {
 
 	private JButton submitButton;
@@ -51,6 +60,8 @@ public class InterfaceDesign {
 
 	}
 
+	
+	
 	private void createView() {
 
 		JFrame frame = new JFrame();
@@ -130,9 +141,6 @@ public class InterfaceDesign {
 
 				for (int i = 0; i < topN; i++) {
 					tempName = cN.getColorName(result[i][0], result[i][1], result[i][2]);
-					// System.out.println("The color " + i + " is "+
-					// result[i][0]+","+result[i][1]+","+result[i][2]);
-					// System.out.println(tempName);
 					colorNames[i] = tempName;
 				}
 
@@ -142,9 +150,7 @@ public class InterfaceDesign {
 
 				picsAdd =  cP.similarPic(colorNames);
 
-				//System.out.println(picsAdd.get(0));
-				//System.out.println(picsAdd.get(1));
-				//System.out.println(picsAdd.get(2));
+
 				DrawColorOfPicture drawColorOfPicture = new DrawColorOfPicture(result, colorNames, topN, true);
 
 				BufferedImage showColor = drawColorOfPicture.getProcessedImage();
@@ -214,16 +220,7 @@ public class InterfaceDesign {
 		ConnectImage connectImage3 = new ConnectImage(topN, nameOfPics.get(2));
 		BufferedImage reconImage3 = connectImage3.getFinalImage();
 
-		/*
-		 * ImageReading im3 = new ImageReading(nameOfPics.get(1)); BufferedImage
-		 * reconImage2 = im3.getImage();
-		 * 
-		 * ImageReading im4 = new ImageReading(nameOfPics.get(2)); BufferedImage
-		 * reconImage3 = im4.getImage();
-		 * 
-		 * ImageReading testImage = new ImageReading("white1.jpg"); BufferedImage
-		 * testBufferedImage = testImage.getImage();
-		 */
+		
 
 		int[] resizedreconImage1Dimention = CalculateDimention(450, 450, reconImage1);
 		int[] resizedreconImage2Dimention = CalculateDimention(450, 450, reconImage2);
@@ -322,12 +319,15 @@ public class InterfaceDesign {
 
 	}
 
-	/*
-	 * This method is used to calculate zoom-in and zoom-out image based on a panel
-	 * size
-	 * 
-	 */
+	
 
+	
+	/*
+	 * This method is used to calculate new resized image dimension,
+	 *  Since we zoom-in and zoom-out image is based on the proportional ratio of 
+	 *  the original image size where it will not cause object in the image losing 
+	 *  actual shape.
+	 */
 	private int[] CalculateDimention(int panelHeight, int panelWidth, BufferedImage inputImage) {
 
 		// get height and width of the input image
@@ -363,13 +363,11 @@ public class InterfaceDesign {
 	}
 
 	/*
-	 * ImagePane imagePane = new ImagePane(); ImageList imageList = new ImageList();
+	 * This method is used to calculate zoom-in and zoom-out image based on a panel
+	 * size, here is zoom-in and zoom-out is based on proportion of the orginal image
+	 * size. 
 	 * 
-	 * imageList.getSelectionModel().addListSelectionListener( new
-	 * Listener(imageList.getModel(),imagePane)); new ImageFrame(imageList,
-	 * imagePane);
 	 */
-
 	public BufferedImage scaleImage(BufferedImage img, int height, int width) {
 		Image temp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 		BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -385,32 +383,5 @@ public class InterfaceDesign {
 		return numberOfRecon;
 	}
 
+	
 }
-/*
- * class Listener implements ListSelectionListener{
- * 
- * private ListModel listModel; private ImagePane imagePane; public
- * Listener(ListModel<Object> listModelIn, ImagePane imagePaneIn) { listModel =
- * listModelIn; imagePane = imagePaneIn;
- * 
- * }
- * 
- * @Override public void valueChanged(ListSelectionEvent e) { // TODO
- * Auto-generated method stub ListSelectionModel lsmListSelectionModel =
- * (ListSelectionModel)e.getSource();
- * 
- * if(!lsmListSelectionModel.isSelectionEmpty()) { int minIndex =
- * lsmListSelectionModel.getMinSelectionIndex(); int maxIndex =
- * lsmListSelectionModel.getMaxSelectionIndex();
- * 
- * for(int i = minIndex; i<= maxIndex; i++) {
- * if(lsmListSelectionModel.isSelectedIndex(i)) {
- * imagePane.SetImage(listModel.getElementAt(i)); } }
- * 
- * }
- * 
- * 
- * }
- * 
- * }
- */

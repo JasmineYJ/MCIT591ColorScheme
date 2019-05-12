@@ -5,88 +5,102 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-
+/*
+ * This class is used to draw color bar image in a black image. 
+ * Since we only have RGB value of recommend image, thus, based on  
+ * RGB value, we draw a color at a black image (like a painting board)
+ * The user can choose whether color bar is vertically or horizontally 
+ * draw in black image. 
+ * 
+ */
 
 public class DrawColorOfPicture {
 	private int[][] result;
-	private int whiteHight ;
-	private int whiteWidth;
 	private int topN;
 	private String[] nameOfColor;
 	BufferedImage whiteImage;
 	BufferedImage rawImage;
 	BufferedImage processedImage;
 
-	
-   int width;
-   int height;
 
+	int width;
+	int height;
+
+	/*
+	 *  If upright is true, the output color bar in the image is horizontally allocated;
+	 *  otherwise, the output color bar in the image is vertically allocated
+	 *  
+	 */
 	public DrawColorOfPicture(int[][] result, String[] nameOfColor, int topN , Boolean upRight) {
 		this.result= result;
 		this.nameOfColor = nameOfColor;
 		this.topN = topN;
 
-		ImageReading imageReading = new ImageReading("white.jpg");
+		ImageReading imageReading = new ImageReading("black.jpg");
 		whiteImage  = imageReading.getImage();
-		
-     		if (upRight == true) {
-     			BufferedImage rawImage = resize(whiteImage, 200, 600);
-     			processedImage = colorImage1(200, 600, rawImage);
-     		   AddTex1(200,600);
+
+		if (upRight == true) {
+			BufferedImage rawImage = resize(whiteImage, 200, 600);
+			processedImage = colorImage1(200, 600, rawImage);
+			AddTex1(200,600);
 		}else {
 			BufferedImage rawImage = resize(whiteImage, 600, 200);
- 			processedImage = colorImage2(600, 200, rawImage);
- 			  AddTex2(600,200);
+			processedImage = colorImage2(600, 200, rawImage);
+			AddTex2(600,200);
 		}
-     		
+
 	}
 
 
-
-
-
+	/*
+	 *  This method is draw color bar horizontally . 
+	 */
 	public BufferedImage colorImage1(int width, int height, BufferedImage rawImage) {
-		
+
 		int heightOfBar = (int) height/topN;
-     for (int i = 0; i < topN; i++) {
-		for (int j = 0; j < width; j++) {
-			for (int k = heightOfBar*i; k < heightOfBar*(i+1)-20; k++) {
-				java.awt.Color myColor = new java.awt.Color(result[i][0],result[i][1],result[i][2]);
-				rawImage.setRGB(j, k, myColor.getRGB());		
+		for (int i = 0; i < topN; i++) {
+			for (int j = 0; j < width; j++) {
+				for (int k = heightOfBar*i; k < heightOfBar*(i+1)-20; k++) {
+					java.awt.Color myColor = new java.awt.Color(result[i][0],result[i][1],result[i][2]);
+					rawImage.setRGB(j, k, myColor.getRGB());		
+
+				}
 
 			}
-
-		}
 
 		} 
 		return rawImage; 
 	}
 
 
-
+	/*
+	 *  This method is add name of color when color bar is horizontal. 
+	 */
 	public void AddTex1(int width, int height ) {
-		
+
 		int heightOfBar = (int) height/topN;
 		int xPosition = width/2-50;
 		int yPosition = 0;
-		
-		
+
+
 		for(int i = 0; i < topN ; i++) {
-			
+
 			yPosition = heightOfBar/2+heightOfBar*i;
 			Graphics g = processedImage.getGraphics();
 			g.setFont(g.getFont().deriveFont(20f));
 			g.drawString(nameOfColor[i], xPosition, yPosition);
 			g.dispose();
 		}
-			
-		
+
+
 	}
-	
-	
+
+	/*
+	 *  This method is draw color bar vertically. 
+	 */
 	public BufferedImage colorImage2(int width, int height, BufferedImage rawImage) {
 		int widthOfBar =  (int) width/topN;
-		
+
 		for (int i = 0; i < topN; i++) {
 			for (int j = 0; j < height; j++) {
 				for (int k = widthOfBar*i; k < widthOfBar*(i+1)-10; k++) {	
@@ -97,20 +111,23 @@ public class DrawColorOfPicture {
 
 			}
 
-			} 
-			return rawImage; 				
+		} 
+		return rawImage; 				
 	}
-
+   
 	
-public void AddTex2(int width, int height ) {
-		
+	/*
+	 *  This method is add name of color when color bar is vertical. 
+	 */
+	public void AddTex2(int width, int height ) {
+
 		int widthOfBar = (int) width/topN;
 		int xPosition = 0;
 		int yPosition = height/2-60;
-		
-		
+
+
 		for(int i = 0; i < topN ; i++) {
-			
+
 			xPosition = widthOfBar/2+widthOfBar*i;
 			Graphics g = processedImage.getGraphics();
 			Font font = new Font(null, Font.PLAIN,20);
@@ -121,39 +138,37 @@ public void AddTex2(int width, int height ) {
 			g.drawString(nameOfColor[i], xPosition, yPosition);
 			g.dispose();
 		}
- }
-
-	
-	
-	
-	public  BufferedImage resize(BufferedImage img, int newWidth, int newHeight) {
-		Image tem= img.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-		BufferedImage resultImage = new BufferedImage(newWidth, newHeight,BufferedImage.TYPE_INT_RGB);
-		
-		Graphics2D g = resultImage.createGraphics();
-		g.drawImage(tem,0,0,null);
-		g.dispose();
-		
-		return resultImage;
-		
-		
 	}
 
 
+	/*
+	 * This method is used to resize the image when user given any integer number 
+	 * of height and width of new image 
+	 */
+	public  BufferedImage resize(BufferedImage img, int newWidth, int newHeight) {
+		Image tem= img.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+		BufferedImage resultImage = new BufferedImage(newWidth, newHeight,BufferedImage.TYPE_INT_RGB);
 
- 
+		Graphics2D g = resultImage.createGraphics();
+		g.drawImage(tem,0,0,null);
+		g.dispose();
+
+		return resultImage;	
+
+	}
+
 
 	public BufferedImage getProcessedImage() {
 		return processedImage;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 
 
 }
