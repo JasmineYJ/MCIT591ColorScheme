@@ -19,3 +19,6 @@ We empower our user with the ability to focus by extracting the top N colors (N 
 * To get the optimized result for the recommended images, we set the range of user input integer to be 5-7.
 * Hope you enjoy our color scheme program.
 
+### Presentation Video
+https://www.dropbox.com/s/bx8i3np3j7z9a4m/591_Final%20Project.MP4?dl=0
+
