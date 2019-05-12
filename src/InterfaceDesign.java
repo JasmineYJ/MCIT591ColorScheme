@@ -65,13 +65,13 @@ public class InterfaceDesign {
 		c.anchor = GridBagConstraints.LINE_START;
 		frame.getContentPane().add(panel);
 
-		label1 = new JLabel("Please enter the name of your image (e.g. p10.jpg) : ");
+		label1 = new JLabel("Please enter the name of your image (e.g. test_image.jpg) : ");
 		label1.setFont(label1.getFont().deriveFont(12.0f));
 		label1.setForeground(Color.WHITE);
 		panel.add(label1, c);
 		c.gridy++;
 
-		label2 = new JLabel("Number of colors you wish to see (from 3 to 5) : ");
+		label2 = new JLabel("Number of colors you wish to see (from 5 to 7) : ");
 		label2.setFont(label1.getFont().deriveFont(12.0f));
 		label2.setForeground(Color.WHITE);
 		panel.add(label2, c);
@@ -100,7 +100,6 @@ public class InterfaceDesign {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				nameString = textField1.getText();
 
 				numberOfReconString = textField2.getText();

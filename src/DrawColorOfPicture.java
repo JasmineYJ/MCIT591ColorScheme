@@ -26,7 +26,7 @@ public class DrawColorOfPicture {
 		this.nameOfColor = nameOfColor;
 		this.topN = topN;
 
-		ImageReading imageReading = new ImageReading("black.jpg");
+		ImageReading imageReading = new ImageReading("white.jpg");
 		whiteImage  = imageReading.getImage();
 		
      		if (upRight == true) {

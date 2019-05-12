@@ -3,30 +3,31 @@ import jdk.internal.org.objectweb.asm.tree.TryCatchBlockNode;
 import java.io.*;
 
 /**
- * Recommend similar picture by comparing the color names
- * 
- * @author jasminejian
+ * Recommend similar picture by comparing the color names. This class goes hand
+ * in hand with the color name library, we read and store the color names of
+ * each picture during the developing process, which then moved to generated
+ * file to improve the processing time (i.e. we only process the user input
+ * instead of looping through all 200 pictures). Please note that the
+ * performance of this program will improve by expanding the picture library, as
+ * we have 500 color names versus 200 pictures).
  *
  */
 
 public class ColorPictureLibrary {
     public HashMap<Integer, Picture> colorToPicture;
     public String libraryColorResult = "203PictureLibrary.csv";
-     private int numPictures = 203; // TODO: TO SITE OUT. 
+    private int numPictures = 203;
 
     /**
-     * Constructor which loop through all pictures and write to CSV. This line will
-     * retire once we have everything running.
+     * Read through stored CSV file which contains 203 pictures and corresponding
+     * color names;
      * 
      * @param cNames
      */
+
     public ColorPictureLibrary(ColorNameLibrary cNames) {
 	colorToPicture = new HashMap<Integer, Picture>();
 
-	/**
-	 * Read through stored CSV file which contains 203 pictures and corresponding
-	 * color names;
-	 */ 
 	File file = new File(libraryColorResult);
 
 	try {
@@ -47,29 +48,30 @@ public class ColorPictureLibrary {
 		i++;
 	    }
 	} catch (Exception e) {
-	    // TODO: handle exception
-	    e.printStackTrace();
+	    e.printStackTrace(); // Exception handled during testing process
 	}
 
-	
-	/** Retired code: read through the picture library and store the result to the
-	 CSV file.
-	for (Integer i = 1; i <= numPictures; i++) {
-	 Picture pi = new Picture(i, cNames);
-	 colorToPicture.put(i, pi);
-	 }
-	 printOutColors(colorToPicture);
-	 writeColorToCSV(colorToPicture);
-	*/
+	/**
+	 * Retired code: read through the picture library and store the result to the
+	 * CSV file. for (Integer i = 1; i <= numPictures; i++) { Picture pi = new
+	 * Picture(i, cNames); colorToPicture.put(i, pi); }
+	 * printOutColors(colorToPicture); writeColorToCSV(colorToPicture);
+	 */
+
     }
 
     /**
-     * Method that returns a similar picture as user input. Should be called by
-     * system output.
+     * Method that returns a similar picture as user input. During the testing
+     * process, we experimented with different pictures and step through this method
+     * to see if the returned results are good and what pictures have been
+     * considered during this "competition". We also tried with difference number of
+     * colors and addressed the following: (1) over emphasis of white / gray colors;
+     * (2) picture with only one matched color but was recommended. 
      * 
      * @param userPicture
      * @return
      */
+
     public ArrayList<String> similarPic(String[] userPicture) {
 	Integer ref1 = 0;
 	Integer ref2 = 0;
@@ -78,7 +80,7 @@ public class ColorPictureLibrary {
 	int benchmark2 = 1;
 	int benchmark3 = 1;
 	int len = userPicture.length;
-	
+
 	ArrayList<String> result = new ArrayList<String>();
 
 	for (Integer i : colorToPicture.keySet()) {
@@ -119,51 +121,36 @@ public class ColorPictureLibrary {
 	result.add(sP2.getPictureFileName());
 	Picture sP3 = colorToPicture.get(ref3);
 	result.add(sP3.getPictureFileName());
-	
+
 	return result;
-			
-			
-			//sP1.getPictureFileName() + "," + sP2.getPictureFileName() + "," + sP3.getPictureFileName();// TODO:
-	// remember to
-	// Integrate
-	// with UX
     }
 
-/** 	Soon to be Retired Code: print out the colors read for testing;
-    public void printOutColors(HashMap<Integer, Picture> pictureLib) {
-	for (Integer i : pictureLib.keySet()) {
-	    Picture thisP = pictureLib.get(i);
-	    System.out.print(i+",");
-	    System.out.print(thisP.getC1() + ",");
-	    System.out.print(thisP.getC2() + ",");
-	    System.out.print(thisP.getC3() + ",");
-	    System.out.print(thisP.getC4() + ",");
-	    System.out.print(thisP.getC5() + ",");
-	    System.out.println(thisP.getC6());
-	}
+    public HashMap<Integer, Picture> getColorToPicture() {
+        return colorToPicture;
     }
 
-    	Method that write the resulted hash map to the CSV file.
-    	public void writeColorToCSV(HashMap<Integer, Picture> pictureLib) {
-	File out = new File(libraryColorResult);
-
-	try (PrintWriter pw = new PrintWriter(out)) {
-
-	    // Prints each line in answers
-	    for (Integer i : pictureLib.keySet()) {
-		pw.print(i + ",");
-		Picture thisP = pictureLib.get(i);
-		pw.print(thisP.getC1() + ",");
-		pw.print(thisP.getC2() + ",");
-		pw.print(thisP.getC3() + ",");
-		pw.print(thisP.getC4() + ",");
-		pw.print(thisP.getC5() + ",");
-	    }
-
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    System.out.println("Could not write the File out.  Check permissions, or contact course staff for help");
-	}
-  }
-*/
+    /**
+     * Retired Code: print out the colors read for testing; public void
+     * printOutColors(HashMap<Integer, Picture> pictureLib) { for (Integer i :
+     * pictureLib.keySet()) { Picture thisP = pictureLib.get(i);
+     * System.out.print(i+","); System.out.print(thisP.getC1() + ",");
+     * System.out.print(thisP.getC2() + ","); System.out.print(thisP.getC3() + ",");
+     * System.out.print(thisP.getC4() + ","); System.out.print(thisP.getC5() + ",");
+     * System.out.println(thisP.getC6()); } }
+     * 
+     * Method that write the resulted hash map to the CSV file. public void
+     * writeColorToCSV(HashMap<Integer, Picture> pictureLib) { File out = new
+     * File(libraryColorResult);
+     * 
+     * try (PrintWriter pw = new PrintWriter(out)) {
+     * 
+     * // Prints each line in answers for (Integer i : pictureLib.keySet()) {
+     * pw.print(i + ","); Picture thisP = pictureLib.get(i); pw.print(thisP.getC1()
+     * + ","); pw.print(thisP.getC2() + ","); pw.print(thisP.getC3() + ",");
+     * pw.print(thisP.getC4() + ","); pw.print(thisP.getC5() + ","); }
+     * 
+     * } catch (IOException e) { e.printStackTrace(); System.out.println("Could not
+     * write the File out. Check permissions, or contact course staff for help"); }
+     * }
+     */
 }

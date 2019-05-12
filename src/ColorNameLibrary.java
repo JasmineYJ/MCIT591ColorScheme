@@ -1,8 +1,6 @@
 import java.io.*;
 import java.util.*;
-
 import com.sun.webkit.ThemeClient;
-
 import java.awt.Color;
 
 /**
@@ -20,80 +18,79 @@ import java.awt.Color;
  */
 
 public class ColorNameLibrary {
-	public HashMap<String, ColorInt> colorNames;
-	private final String colorNamefile = "500ColorNames.csv";
+    public HashMap<String, ColorInt> colorNames;
+    private final String colorNamefile = "500ColorNames.csv";
 
-	public String getColorName(int rValue, int gValue, int bValue) {
-		// System.out.println(rValue + "," + gValue + "," + bValue);
-		String thisName = "";
-		boolean colorFound = false;
-		double minDist = 0.00;
-		// double minDist = 100.00 * (256.0 * 256.0);
-
-		/**
-		 * Loop through the colorNames Hashmap to find the closet color name
-		 */
-		while (colorFound == false) {
-			for (String c : colorNames.keySet()) {
-				double dist = distance(colorNames.get(c), rValue, gValue, bValue);
-				if (dist < minDist) {
-					// minDist = dist;
-					thisName = c;
-					colorFound = true;
-				}
-
-			}
-			// System.out.println(colorFound+", MinDist now is: "+minDist);
-			minDist += 2;
-		}
-		// System.out.println(thisName);
-		return thisName;
-
-	}
-
-	public int distance(ColorInt colorInt, int rValue, int gValue, int bValue) {
-		int dist = 0;
-		dist += (int) Math.pow(rValue - colorInt.getrValue(), 2);
-		dist += (int) Math.pow(gValue - colorInt.getgValue(), 2);
-		dist += (int) Math.pow(bValue - colorInt.getbValue(), 2);
-		return dist;
-
-	}
+    public String getColorName(int rValue, int gValue, int bValue) {
+	// System.out.println(rValue + "," + gValue + "," + bValue);//Annotated the test
+	// code.
+	String thisName = "";
+	boolean colorFound = false;
+	double minDist = 0.00;
+	// double minDist = 100.00 * (256.0 * 256.0); //Annotated the test code;
 
 	/**
-	 * Read from the csv file; HashMap = (Color Name, Color); Color = Name, rValue,
-	 * gValue and bValue;
+	 * Loop through the colorNames Hash Map to find the closet color name;
 	 */
-
-	public ColorNameLibrary() {
-		File file = new File(colorNamefile);
-		colorNames = new HashMap<String, ColorInt>();
-
-		try {
-			Scanner scanner = new Scanner(file);
-			// scanner.nextLine(); // not skip the first row
-
-			while (scanner.hasNextLine()) {
-				String colorRow = scanner.nextLine();
-				String[] columnData = colorRow.split(",");
-				String tempName = columnData[0];
-				int tempR = Integer.valueOf(columnData[1]);
-				int tempG = Integer.valueOf(columnData[2]);
-				int tempB = Integer.valueOf(columnData[3]);
-				ColorInt newColor = new ColorInt(tempName, tempR, tempG, tempB);
-				// System.out.println(tempName+", "+tempR+","+tempG+","+tempB); //TODO: Remeber
-				// to delete'
-				colorNames.put(tempName, newColor);
-
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+	while (colorFound == false) {
+	    for (String c : colorNames.keySet()) {
+		double dist = distance(colorNames.get(c), rValue, gValue, bValue);
+		if (dist < minDist) {
+		    // minDist = dist;
+		    thisName = c;
+		    colorFound = true;
 		}
-	}
 
-	public HashMap<String, ColorInt> getColorNames() {
-		return colorNames;
+	    }
+	    // System.out.println(colorFound+", MinDist now is: "+minDist); //Annotated the
+	    // test code.
+	    minDist += 2;
 	}
+	// System.out.println(thisName); //Annotated the test code.
+	return thisName;
+
+    }
+
+    public int distance(ColorInt colorInt, int rValue, int gValue, int bValue) {
+	int dist = 0;
+	dist += (int) Math.pow(rValue - colorInt.getrValue(), 2);
+	dist += (int) Math.pow(gValue - colorInt.getgValue(), 2);
+	dist += (int) Math.pow(bValue - colorInt.getbValue(), 2);
+	return dist;
+
+    }
+
+    /**
+     * Read from the generated file; HashMap = (Color Name, Color); Color = Name, rValue,
+     * gValue and bValue;
+     */
+
+    public ColorNameLibrary() {
+	File file = new File(colorNamefile);
+	colorNames = new HashMap<String, ColorInt>();
+
+	try {
+	    Scanner scanner = new Scanner(file);
+	    // scanner.nextLine(); // not skip the first row
+
+	    while (scanner.hasNextLine()) {
+		String colorRow = scanner.nextLine();
+		String[] columnData = colorRow.split(",");
+		String tempName = columnData[0];
+		int tempR = Integer.valueOf(columnData[1]);
+		int tempG = Integer.valueOf(columnData[2]);
+		int tempB = Integer.valueOf(columnData[3]);
+		ColorInt newColor = new ColorInt(tempName, tempR, tempG, tempB);
+		colorNames.put(tempName, newColor);
+
+	    }
+	} catch (Exception e) {
+	    e.printStackTrace(); // Exception tested with demo pictures
+	}
+    }
+
+    public HashMap<String, ColorInt> getColorNames() {
+	return colorNames;
+    }
 
 }

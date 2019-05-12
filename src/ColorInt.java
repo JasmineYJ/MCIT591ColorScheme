@@ -1,6 +1,7 @@
 /**
- * Color itself is a primitive type. In order to use a hashmap, need to have a separate class 
- * @author jasminejian
+ * Color itself is a primitive type. In order to use a Hash Map, need to have a
+ * separate class to hold the R, G, B value for each color and map it to
+ * corresponding names.
  *
  */
 
@@ -18,36 +19,35 @@ public class ColorInt {
     }
 
     public String getColorName() {
-        return colorName;
+	return colorName;
     }
 
     public void setColorName(String colorName) {
-        this.colorName = colorName;
+	this.colorName = colorName;
     }
 
     public int getrValue() {
-        return rValue;
+	return rValue;
     }
 
     public void setrValue(int rValue) {
-        this.rValue = rValue;
+	this.rValue = rValue;
     }
 
     public int getgValue() {
-        return gValue;
+	return gValue;
     }
 
     public void setgValue(int gValue) {
-        this.gValue = gValue;
+	this.gValue = gValue;
     }
 
     public int getbValue() {
-        return bValue;
+	return bValue;
     }
 
     public void setbValue(int bValue) {
-        this.bValue = bValue;
+	this.bValue = bValue;
     }
-
 
 }
